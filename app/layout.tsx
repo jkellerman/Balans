@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${jakarta.className} bg-background text-foreground`}>
+			<body className={`${jakarta.className} bg-background text-foreground transition-colors duration-300`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					{children}
 				</ThemeProvider>
