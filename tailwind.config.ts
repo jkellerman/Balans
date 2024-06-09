@@ -1,24 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  darkMode: "class",
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        border: "hsl(var(--border-color))",
-        primary: "hsl(var(--primary))",
-        secondary: "hsl(var(--secondary))",
-        tertiary: "hsl(var(--tertiary))",
-        quaternary: "hsl(var(--quaternary))",
-        senary: "hsl(var(--senary))",
-      },
-    },
-  },
+	darkMode: "class",
+	content: [
+		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+	],
+	theme: {
+		extend: {
+			colors: {
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
+				border: "hsl(var(--border-color))",
+				primary: "hsl(var(--primary))",
+				secondary: "hsl(var(--secondary))",
+				tertiary: "hsl(var(--tertiary))",
+				quaternary: "hsl(var(--quaternary))",
+				senary: "hsl(var(--senary))",
+			},
+		},
+	},
 };
