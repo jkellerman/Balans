@@ -1,20 +1,20 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 interface LogoProps {
 	className?: string;
 }
 
 export default function Logo({ className }: LogoProps) {
 	return (
-		<div className="flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-background dark:bg-foreground dark:text-background">
-			<svg
-				width="16"
-				height="23"
-				className={className}
-				viewBox="0 0 16 23"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
+		<span
+			className={cn(
+				"flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-background dark:bg-foreground dark:text-background",
+				className
+			)}
+		>
+			<svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<rect y="3" width="7" height="20" fill="currentColor" />
 				<circle cx="12" cy="4" r="4" fill="#929EAD" />
 				<path
@@ -22,6 +22,6 @@ export default function Logo({ className }: LogoProps) {
 					fill="currentColor"
 				/>
 			</svg>
-		</div>
+		</span>
 	);
 }

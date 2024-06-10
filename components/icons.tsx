@@ -1,20 +1,7 @@
+import { Types } from "@/types/index";
+
 interface IconsProps {
-	icon:
-		| "ArrowUp"
-		| "Calendar"
-		| "ChevronRight"
-		| "Expenses"
-		| "Help"
-		| "Home"
-		| "Income"
-		| "Investments"
-		| "Piggy"
-		| "Settings"
-		| "Spaces"
-		| "Subscriptions"
-		| "Toggle"
-		| "Transactions"
-		| "Wallet";
+	icon: Types.Icons;
 	className?: string;
 }
 
@@ -171,7 +158,7 @@ export default function Icons({ className, icon }: IconsProps) {
 	const Subscriptions = (
 		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
-				d="M21 8H7C6.45 8 6 7.55 6 7C6 6.45 6.45 6 7 6H21C21.55 6 22 6.45 22 7C22 7.55 21.55 8 21 8ZM19 2H9C8.45 2 8 2.45 8 3C8 3.55 8.45 4 9 4H19C19.55 4 20 3.55 20 3C20 2.45 19.55 2 19 2ZM24 12V20C24 21.1 23.1 22 22 22H6C4.9 22 4 21.1 4 20V12C4 10.9 4.9 10 6 10H22C23.1 10 24 10.9 24 12ZM17.19 15.56L12 12.73V19.26L17.19 16.44C17.2694 16.3972 17.3357 16.3336 17.3819 16.2562C17.4281 16.1787 17.4525 16.0902 17.4525 16C17.4525 15.9098 17.4281 15.8213 17.3819 15.7438C17.3357 15.6664 17.2694 15.6028 17.19 15.56Z"
+				d="M19 8H5C4.45 8 4 7.55 4 7C4 6.45 4.45 6 5 6H19C19.55 6 20 6.45 20 7C20 7.55 19.55 8 19 8ZM17 2H7C6.45 2 6 2.45 6 3C6 3.55 6.45 4 7 4H17C17.55 4 18 3.55 18 3C18 2.45 17.55 2 17 2ZM22 12V20C22 21.1 21.1 22 20 22H4C2.9 22 2 21.1 2 20V12C2 10.9 2.9 10 4 10H20C21.1 10 22 10.9 22 12ZM15.19 15.56L10 12.73V19.26L15.19 16.44C15.2694 16.3972 15.3357 16.3336 15.3819 16.2562C15.4281 16.1787 15.4525 16.0902 15.4525 16C15.4525 15.9098 15.4281 15.8213 15.3819 15.7438C15.3357 15.6664 15.2694 15.6028 15.19 15.56Z"
 				fill="currentColor"
 			/>
 		</svg>
