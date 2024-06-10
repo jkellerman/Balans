@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
 	darkMode: "class",
@@ -9,6 +10,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			animation: {
+				"enter-l": "enter-l 150ms cubic-bezier(0, 0, 0.2, 1)",
+			},
 			colors: {
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
@@ -17,8 +21,21 @@ module.exports = {
 				secondary: "hsl(var(--secondary))",
 				tertiary: "hsl(var(--tertiary))",
 				quaternary: "hsl(var(--quaternary))",
+				quinary: "hsl(var(--quinary))",
 				senary: "hsl(var(--senary))",
+				septenary: "hsl(var(--septenary))",
 			},
+			keyframes: {
+				"enter-l": {
+					"0%": { opacity: "0", transform: "translateX(-10px)" },
+					"100%": { opacity: "1", transform: "translateX(0)" },
+				},
+			},
+		},
+		screens: {
+			xxs: "425px",
+			xs: "475px",
+			...defaultTheme.screens,
 		},
 	},
 };

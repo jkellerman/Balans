@@ -18,8 +18,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${jakarta.className} bg-background text-foreground transition-colors duration-300`}>
+		<html lang="en" suppressHydrationWarning>
+			<body className={`${jakarta.className} h-full bg-background text-foreground antialiased`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					{children}
 				</ThemeProvider>

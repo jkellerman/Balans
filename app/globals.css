@@ -14,27 +14,29 @@ html {
 	height: 100%;
 }
 
-:root {
-	--background: 0 0% 100%;
-	--foreground: 240 14% 1%;
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 240 14% 1%;
 
-	--primary: 94 85% 65%;
-	--secondary: 73 82% 60%;
-	--tertiary: 153 68% 50%;
-	--quaternary: 262 89% 61%;
-	--quinary: 262 28% 92%;
-	--senary: 213 14% 63%;
+		--primary: 94 85% 65%;
+		--secondary: 73 82% 60%;
+		--tertiary: 153 68% 50%;
+		--quaternary: 262 89% 61%;
+		--quinary: 240 14% 1%;
+		--senary: 262 28% 92%;
+		--septenary: 213 14% 63%;
+		--border-color: 90 10% 96%;
+	}
 
-	--border-color: 90 10% 96%;
-}
+	.dark {
+		--background: 240 14% 1%;
+		--foreground: 0 0% 100%;
 
-.dark {
-	--background: 240 14% 1%;
-	--foreground: 0 0% 100%;
+		--senary: 249 15% 18%;
 
-	--quinary: 249 15% 18%;
-
-	--border-color: 240 7% 16%;
+		--border-color: 240 7% 16%;
+	}
 }
 
 @layer utilities {
