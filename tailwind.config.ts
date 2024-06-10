@@ -11,7 +11,7 @@ module.exports = {
 	theme: {
 		extend: {
 			animation: {
-				"enter-l": "enter-l 150ms cubic-bezier(0, 0, 0.2, 1)",
+				"enter-l": "enter-l 300ms cubic-bezier(.4,0,.2,1)",
 			},
 			colors: {
 				background: "hsl(var(--background))",
@@ -38,4 +38,5 @@ module.exports = {
 			...defaultTheme.screens,
 		},
 	},
+	plugins: [require("tailwindcss-animate")],
 };
