@@ -3,40 +3,29 @@ import { usePathname } from "next/navigation";
 
 import Icons from "@/components/icons";
 import { Tooltip, TooltipContent, TooltipPortal, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Links, SettingsLinks } from "@/constants/navigation";
 import { Types } from "@/types";
 import clsx from "clsx";
-
-const Links = [
-	{ name: "Home", href: "/dashboard", icon: "Home" as const },
-	{ name: "Income", href: "/dashboard/income", icon: "Income" as const },
-	{ name: "Expenses", href: "/dashboard/expenses", icon: "Expenses" as const },
-	{ name: "Transactions", href: "/dashboard/transactions", icon: "Transactions" as const },
-	{ name: "Investments", href: "/dashboard/investments", icon: "Investments" as const },
-	{ name: "Subscriptions", href: "/dashboard/subscriptions", icon: "Subscriptions" as const },
-	{ name: "Spaces", href: "/dashboard/spaces", icon: "Spaces" as const },
-];
 
 export default function Navigation() {
 	return (
 		<nav className="flex h-full flex-col items-center justify-between">
 			<ul>
 				{Links.map((link, i) => (
-					<NavItem key={i} path={link.href} icon={link.icon} name={link.name} />
+					<NavItem key={i} path={link.href} icon={link.icon as Types.Icons} name={link.name} />
 				))}
 			</ul>
 			<div className="flex flex-col gap-8">
-				<span className="text-septenary hover:text-foreground hover:transition-colors">
-					<Link href="mailto:joshkellerman9@gmail.com">
-						<Icons icon="Help" className="h-6 w-6" />
-						<span className="sr-only">settings</span>
-					</Link>
-				</span>
-				<span className="text-septenary hover:text-foreground hover:transition-colors">
-					<Link href="/settings">
-						<Icons icon="Settings" className="h-6 w-6" />
-						<span className="sr-only">settings</span>
-					</Link>
-				</span>
+				{SettingsLinks.map((link, i) => (
+					<span key={i} className="text-septenary hover:text-foreground hover:transition-colors">
+						<Link href={link.href}>
+							<span aria-hidden="true">
+								<Icons icon={link.icon as Types.Icons} className="h-6 w-6" />
+							</span>
+							<span className="sr-only">{link.name}</span>
+						</Link>
+					</span>
+				))}
 			</div>
 		</nav>
 	);
@@ -48,7 +37,7 @@ interface NavItemProps {
 	name: string;
 }
 
-export const NavItem = ({ path, icon, name }: NavItemProps) => {
+const NavItem = ({ path, icon, name }: NavItemProps) => {
 	const pathname = usePathname();
 
 	return (
@@ -65,7 +54,9 @@ export const NavItem = ({ path, icon, name }: NavItemProps) => {
 							href={path}
 							className="relative flex items-center justify-center px-4 py-2 after:absolute after:h-full after:w-full after:content-['']"
 						>
-							<Icons icon={icon} className="h-6 w-6" />
+							<span aria-hidden="true">
+								<Icons icon={icon} className="h-6 w-6" />
+							</span>
 							<span className="sr-only">{path}</span>
 						</Link>
 					</li>
@@ -74,7 +65,7 @@ export const NavItem = ({ path, icon, name }: NavItemProps) => {
 					<TooltipContent
 						side="right"
 						sideOffset={10}
-						className="animate-enter-l rounded-md bg-foreground px-4 py-1 text-background"
+						className="animate-enter-l rounded-md bg-foreground px-4 py-1 font-bold text-background"
 					>
 						{name}
 					</TooltipContent>

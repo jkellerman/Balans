@@ -45,6 +45,17 @@ export default function Icons({ className, icon }: IconsProps) {
 			/>
 		</svg>
 	);
+	const Close = (
+		<svg className={className} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M1 1L13.5 13.5M1 13.5L13.5 1"
+				stroke="currentColor"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
 	const Expenses = (
 		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -54,6 +65,17 @@ export default function Icons({ className, icon }: IconsProps) {
 			<path
 				d="M13.37 13.5H16.37C16.5689 13.5 16.7597 13.421 16.9003 13.2803C17.041 13.1397 17.12 12.9489 17.12 12.75C17.12 12.5511 17.041 12.3603 16.9003 12.2197C16.7597 12.079 16.5689 12 16.37 12H13.37C13.1711 12 12.9803 12.079 12.8397 12.2197C12.699 12.3603 12.62 12.5511 12.62 12.75C12.62 12.9489 12.699 13.1397 12.8397 13.2803C12.9803 13.421 13.1711 13.5 13.37 13.5Z"
 				fill="currentColor"
+			/>
+		</svg>
+	);
+	const Hamburger = (
+		<svg className={className} viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M1 13.5H18.5M1 7.25H18.5M1 1H18.5"
+				stroke="currentColor"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 		</svg>
 	);
@@ -209,8 +231,12 @@ export default function Icons({ className, icon }: IconsProps) {
 			return Calendar;
 		case "ChevronRight":
 			return ChevronRight;
+		case "Close":
+			return Close;
 		case "Expenses":
 			return Expenses;
+		case "Hamburger":
+			return Hamburger;
 		case "Help":
 			return Help;
 		case "Home":

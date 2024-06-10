@@ -1,6 +1,7 @@
 import Icons from "../icons";
 import Logo from "../logo";
 import Avatar from "../ui/avatar";
+import Menu from "./menu";
 
 export default function Header() {
 	return (
@@ -12,9 +13,9 @@ export default function Header() {
 							<Logo className="md:hidden" />
 							<h1 className="text-lg font-bold lg:text-xl">Good morning, Josh!</h1>
 						</div>
-						<div className="rounded-md border border-foreground px-3 py-2 md:hidden">H</div>
+						<Menu />
 					</div>
-
+					{/* TODO: Create UI component for datepicker */}
 					<div className="flex w-full items-center gap-4 xs:w-auto lg:gap-9">
 						<div className="flex w-full items-center rounded-md bg-senary text-sm xs:w-auto">
 							<div className="flex w-3/5 items-center gap-2 border-r border-background px-4 py-3 xs:w-4/5">
