@@ -1,6 +1,5 @@
 export declare namespace Types {
 	export type Icons =
-		| "ArrowUp"
 		| "Calendar"
 		| "ChevronRight"
 		| "Close"
@@ -17,4 +16,8 @@ export declare namespace Types {
 		| "Toggle"
 		| "Transactions"
 		| "Wallet";
+
+	export interface Children {
+		children?: React.ReactNode;
+	}
 }
