@@ -210,8 +210,6 @@ export default function Icons({ className, icon }: IconsProps) {
 	);
 
 	switch (icon) {
-		case "ArrowUp":
-			return ArrowUp;
 		case "Calendar":
 			return Calendar;
 		case "ChevronRight":
