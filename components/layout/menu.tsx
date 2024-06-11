@@ -54,7 +54,7 @@ const NavItems = () => {
 						key={i}
 						className={clsx("rounded-r-full px-7 py-3 font-bold", {
 							"text-quinary": pathname !== link.href,
-							"bg-senary text-white": pathname === link.href,
+							"bg-quinary text-white": pathname === link.href,
 						})}
 					>
 						<Link href={link.href}>{link.name}</Link>
