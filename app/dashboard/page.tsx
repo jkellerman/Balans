@@ -8,7 +8,7 @@ export default function Page() {
 		<div className="grid gap-y-4 px-5">
 			<StatCard heading="total balance" icon="Wallet" value={6500.85} />
 			<StatCard heading="total spending" icon="Wallet" value={250.8} />
-			<InfoCard>
+			<InfoCard heading="top spending" subheading="19 - 26 June" linkText="view all">
 				<CardContent className="h-[240px] w-full pb-12">
 					<DonutChart />
 				</CardContent>
