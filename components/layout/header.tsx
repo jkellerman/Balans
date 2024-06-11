@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Icons from "../icons";
 import Logo from "../logo";
 import Avatar from "../ui/avatar";
@@ -10,7 +12,13 @@ export default function Header() {
 				<div className="flex w-full flex-wrap items-center justify-between gap-y-4 px-5 py-6 transition-colors md:flex-nowrap md:py-8 lg:gap-0 lg:px-8">
 					<div className="flex w-full items-center justify-between md:w-auto">
 						<div className="flex items-center gap-4">
-							<Logo className="md:hidden" />
+							<Link href="/">
+								<span aria-hidden="true" className="md:hidden">
+									<Logo />
+								</span>
+
+								<span className="sr-only">Home</span>
+							</Link>
 							<h1 className="text-lg font-bold lg:text-xl">Good morning, Josh!</h1>
 						</div>
 						<Menu />
