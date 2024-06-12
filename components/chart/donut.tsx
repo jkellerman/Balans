@@ -87,7 +87,7 @@ function CustomTooltip({ active, payload, label }: CustomToolTipProps) {
 	}
 	if (active && payload && payload.length) {
 		return (
-			<div className="rounded-md bg-senary px-3 py-2">
+			<div className="rounded-md bg-[hsl(249,15%,18%)] px-3 py-2">
 				<p className="label">{`£${payload[0].value}`}</p>
 				<p className="intro">{getLabel(label)}</p>
 			</div>
