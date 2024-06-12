@@ -4,6 +4,8 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+import { Button } from "./button";
+
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
 	<div ref={ref} className={cn("rounded-md border border-border", className)} {...props} />
 ));
@@ -35,14 +37,16 @@ CardSubHeading.displayName = "CardSubHeading";
 
 const CardLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement>>(
 	({ className, href, children, ...props }, ref) => (
-		<Link
-			href={href as string}
-			ref={ref}
-			className={cn("flex items-center gap-1 text-[13px] capitalize text-tertiary", className)}
-			{...props}
-		>
-			{children}
-		</Link>
+		<Button asChild variant="ghost" size="none">
+			<Link
+				href={href as string}
+				ref={ref}
+				className={cn("gap-1 text-sm font-semibold capitalize", className)}
+				{...props}
+			>
+				{children}
+			</Link>
+		</Button>
 	)
 );
 CardLink.displayName = "CardLink";
