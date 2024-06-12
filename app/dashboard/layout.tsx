@@ -9,9 +9,9 @@ export default function Layout({
 	return (
 		<div className="flex h-full w-full">
 			<Sidebar />
-			<div className="flex h-full w-full flex-col">
+			<div className="flex h-full w-full flex-col overflow-auto">
 				<Header />
-				<main className="flex h-full w-full flex-col">{children}</main>
+				<main className="flex h-full w-full flex-col overflow-auto">{children}</main>
 			</div>
 		</div>
 	);
