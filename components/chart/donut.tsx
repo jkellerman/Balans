@@ -109,7 +109,7 @@ interface CustomLabelProps {
 function CustomLabel({ viewBox, value1, value2 }: CustomLabelProps) {
 	let { cx, cy } = viewBox as { cx: number; cy: number };
 
-	cy -= 7;
+	cy -= 5;
 
 	return (
 		<>
