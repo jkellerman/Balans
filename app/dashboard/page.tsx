@@ -1,6 +1,6 @@
 import InfoCard from "@/components/card/info-card";
 import StatCard from "@/components/card/stat-card";
-import DonutChart from "@/components/chart/pie";
+import DonutChart from "@/components/chart/donut";
 import { CardContent } from "@/components/ui/card";
 
 export default function Page() {
