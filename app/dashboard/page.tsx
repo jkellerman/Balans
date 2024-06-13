@@ -4,6 +4,7 @@ import DonutChart from "@/components/chart/charts/donut";
 import LineChart from "@/components/chart/charts/line";
 import ProgressBar from "@/components/progress-bar";
 import { CardContent } from "@/components/ui/card";
+import { upcomingPayments } from "@/mocks/data";
 
 export default function Page() {
 	return (
@@ -30,6 +31,21 @@ export default function Page() {
 			<InfoCard heading="Activity">
 				<CardContent className="h-[170px] w-full lg:h-5/6">
 					<LineChart />
+				</CardContent>
+			</InfoCard>
+			<InfoCard heading="upcoming payments" linkText="payments" path="/subscriptions">
+				<CardContent className="px-6 py-2">
+					<ul>
+						{upcomingPayments.map((payment, i) => (
+							<li key={i} className="mb-4 flex items-center justify-between">
+								<div className="flex flex-col">
+									<span className="font-bold">{payment.name}</span>
+									<span className="text-sm text-septenary">{payment.date}</span>
+								</div>
+								<span className="font-bold">£{payment.cost}</span>
+							</li>
+						))}
+					</ul>
 				</CardContent>
 			</InfoCard>
 		</div>
