@@ -2,33 +2,25 @@
 
 import { Cell, Label, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
+import customLegend from "../components/legend";
+import CustomTooltip from "../components/tooltip";
+
 export default function DonutChart() {
 	const data = [
-		{ name: "Eating Out", value: 20 },
-		{ name: "Groceries", value: 25 },
-		{ name: "Shopping", value: 10 },
-		{ name: "Transport", value: 10 },
+		{ name: "Eating Out", spent: 20 },
+		{ name: "Groceries", spent: 25 },
+		{ name: "Shopping", spent: 10 },
+		{ name: "Transport", spent: 10 },
 	];
 
 	const COLORS = ["hsl(var(--primary))", "hsl(var(--quaternary))", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
 
-	function customLegendText(value: number, entry: any) {
-		const { color } = entry;
-		return (
-			<span style={{ display: "flex", alignItems: "center" }}>
-				<svg width="10" height="10">
-					<circle cx="5" cy="5" r="5" fill={color} />
-				</svg>
-				<span style={{ marginLeft: 8, color: "hsl(var(--septenary))" }}>{value}</span>
-			</span>
-		);
-	}
 	return (
 		<ResponsiveContainer>
 			<PieChart>
 				<Pie
 					data={data}
-					dataKey="value"
+					dataKey="spent"
 					nameKey="name"
 					cx="40%"
 					cy="45%"
@@ -55,46 +47,12 @@ export default function DonutChart() {
 					verticalAlign="middle"
 					layout="vertical"
 					iconSize={0}
-					wrapperStyle={{ top: 20, right: 30, fontSize: 14, lineHeight: "1em" }}
-					formatter={customLegendText}
+					wrapperStyle={{ top: 2, right: 30, fontSize: 14, lineHeight: "1em" }}
+					formatter={customLegend}
 				/>
 			</PieChart>
 		</ResponsiveContainer>
 	);
-}
-
-interface CustomToolTipProps {
-	active?: any;
-	payload?: any;
-	label?: any;
-}
-
-function CustomTooltip({ active, payload, label }: CustomToolTipProps) {
-	function getLabel(label: string) {
-		if (label === "Eating Out") {
-			return "£300";
-		}
-		if (label === "Groceries") {
-			return "£200";
-		}
-		if (label === "Shopping") {
-			return "£100";
-		}
-		if (label === "Transport") {
-			return "£100";
-		}
-		return "";
-	}
-	if (active && payload && payload.length) {
-		return (
-			<div className="rounded-md bg-[hsl(249,15%,18%)] px-3 py-2">
-				<p className="label">{`£${payload[0].value}`}</p>
-				<p className="intro">{getLabel(label)}</p>
-			</div>
-		);
-	}
-
-	return null;
 }
 
 interface CustomLabelProps {
