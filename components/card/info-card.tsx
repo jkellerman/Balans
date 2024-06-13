@@ -4,25 +4,27 @@ import { Card, CardHeader, CardHeading, CardHeadingContainer, CardLink, CardSubH
 interface InfoCardProps {
 	children: React.ReactNode;
 	heading: string;
-	subheading: string;
-	linkText: string;
-	path: string;
+	subheading?: string;
+	linkText?: string;
+	path?: string;
 }
 
 export default function InfoCard({ children, heading, subheading, linkText, path }: InfoCardProps) {
 	return (
-		<Card className="w-full p-4">
-			<CardHeader>
+		<Card>
+			<CardHeader className="p-4 px-6">
 				<CardHeadingContainer>
-					<CardHeading>{heading}</CardHeading>
-					<CardSubHeading>{subheading}</CardSubHeading>
+					<CardHeading className="md:text-xl">{heading}</CardHeading>
+					{subheading && <CardSubHeading>{subheading}</CardSubHeading>}
 				</CardHeadingContainer>
-				<CardLink href={path}>
-					{linkText}
-					<span aria-hidden="true">
-						<Icons icon="ChevronRight" className="h-2 w-2 translate-y-[1px]" />
-					</span>
-				</CardLink>
+				{linkText && (
+					<CardLink href={path}>
+						{linkText}
+						<span aria-hidden="true">
+							<Icons icon="ChevronRight" className="h-2 w-2 translate-y-[1px]" />
+						</span>
+					</CardLink>
+				)}
 			</CardHeader>
 			{children}
 		</Card>
