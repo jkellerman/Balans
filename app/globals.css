@@ -13,6 +13,12 @@
 html {
 	height: 100%;
 }
+.recharts-cartesian-grid line:first-of-type {
+	display: none;
+}
+.recharts-cartesian-grid line:last-of-type {
+	display: none;
+}
 
 @layer base {
 	:root {
@@ -26,7 +32,11 @@ html {
 		--quinary: 240 14% 1%;
 		--senary: 262 28% 92%;
 		--septenary: 213 14% 63%;
+
 		--border-color: 90 10% 96%;
+
+		--graph-cursor-primary: 260 100% 93%;
+		--graph-cursor-secondary: 256 83% 75%;
 	}
 
 	.dark {
@@ -34,6 +44,9 @@ html {
 		--foreground: 0 0% 100%;
 
 		--senary: 249 15% 18%;
+
+		--graph-cursor-primary: 249 15% 18%;
+		--graph-cursor-secondary: 213 14% 63%;
 
 		--border-color: 240 7% 16%;
 	}

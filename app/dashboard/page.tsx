@@ -1,6 +1,7 @@
 import InfoCard from "@/components/card/info-card";
 import StatCard from "@/components/card/stat-card";
-import DonutChart from "@/components/chart/donut";
+import DonutChart from "@/components/chart/charts/donut";
+import LineChart from "@/components/chart/charts/line";
 import ProgressBar from "@/components/progress-bar";
 import { CardContent } from "@/components/ui/card";
 
@@ -16,7 +17,7 @@ export default function Page() {
 			</InfoCard>
 			<StatCard heading="total saved" icon="Piggy" value={300.85} />
 			<InfoCard heading="Trip to Marrakesh" subheading="75% progress" linkText="manage spaces" path="/spaces">
-				<CardContent className="mt-4">
+				<CardContent className="px-6 pb-4">
 					<div className="mb-3 flex items-center gap-1">
 						<span className="font-bold">£562.50</span>
 						<span className="text-sm">of £750</span>
@@ -26,6 +27,11 @@ export default function Page() {
 			</InfoCard>
 			<StatCard heading="total invested" icon="Investments" value={140} />
 			<StatCard heading="subscriptions" icon="Subscriptions" value={20} />
+			<InfoCard heading="Activity">
+				<CardContent className="h-[170px] w-full lg:h-5/6">
+					<LineChart />
+				</CardContent>
+			</InfoCard>
 		</div>
 	);
 }
