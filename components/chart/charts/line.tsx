@@ -19,46 +19,6 @@ const data = [
 	{ name: "Jun 26", expenses: 390, income: 100 },
 ];
 
-interface CustomCursorProps {
-	points?: any;
-	width: number;
-	height: number | string;
-}
-
-const CustomCursor = ({ points, width, height }: CustomCursorProps) => {
-	const { x, y } = points[0];
-	return (
-		<svg>
-			<defs>
-				<linearGradient id="cursorGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-					<stop offset="0%" style={{ stopColor: "hsl(var(--graph-cursor-primary))", stopOpacity: 1 }} />
-					<stop offset="100%" style={{ stopColor: "hsl(var(--graph-cursor-secondary))", stopOpacity: 1 }} />
-				</linearGradient>
-			</defs>
-			<rect
-				x={x - width / 2} // Centre the rectangle on the x-axis
-				y={y + 10}
-				width={width}
-				height={height}
-				fill="url(#cursorGradient)"
-				rx={10} // Border radius/Rounded corners
-				ry={10} // Border radius/Rounded corners
-				opacity={0.3}
-			/>
-		</svg>
-	);
-};
-
-const CustomActiveDot = (props: any) => {
-	const { cx, cy, stroke, fill } = props;
-	return (
-		<g>
-			<circle cx={cx} cy={cy} r={6} stroke={stroke} fill="none" strokeWidth={6} />
-			<circle cx={cx} cy={cy} r={5} fill={fill} />
-		</g>
-	);
-};
-
 export default function MyLineChart() {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
 
@@ -110,3 +70,43 @@ export default function MyLineChart() {
 		</ResponsiveContainer>
 	);
 }
+
+interface CustomCursorProps {
+	points?: any;
+	width: number;
+	height: number | string;
+}
+
+const CustomCursor = ({ points, width, height }: CustomCursorProps) => {
+	const { x, y } = points[0];
+	return (
+		<svg>
+			<defs>
+				<linearGradient id="cursorGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+					<stop offset="0%" style={{ stopColor: "hsl(var(--graph-cursor-primary))", stopOpacity: 1 }} />
+					<stop offset="100%" style={{ stopColor: "hsl(var(--graph-cursor-secondary))", stopOpacity: 1 }} />
+				</linearGradient>
+			</defs>
+			<rect
+				x={x - width / 2} // Centre the rectangle on the x-axis
+				y={y + 10}
+				width={width}
+				height={height}
+				fill="url(#cursorGradient)"
+				rx={10} // Border radius/Rounded corners
+				ry={10} // Border radius/Rounded corners
+				opacity={0.3}
+			/>
+		</svg>
+	);
+};
+
+const CustomActiveDot = (props: any) => {
+	const { cx, cy, stroke, fill } = props;
+	return (
+		<g>
+			<circle cx={cx} cy={cy} r={6} stroke={stroke} fill="none" strokeWidth={6} />
+			<circle cx={cx} cy={cy} r={5} fill={fill} />
+		</g>
+	);
+};

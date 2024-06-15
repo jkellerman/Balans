@@ -24,9 +24,7 @@ const CardHeadingContainer = React.forwardRef<HTMLDivElement, React.HTMLAttribut
 CardHeadingContainer.displayName = "CardHeadingContainer";
 
 const CardHeading = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
-	({ className, ...props }, ref) => (
-		<h2 ref={ref} className={cn("text-sm font-bold capitalize", className)} {...props} />
-	)
+	({ className, ...props }, ref) => <h2 ref={ref} className={cn("font-bold capitalize", className)} {...props} />
 );
 CardHeading.displayName = "CardHeading";
 

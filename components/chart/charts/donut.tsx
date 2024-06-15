@@ -13,7 +13,7 @@ export default function DonutChart() {
 		{ name: "Transport", spent: 10 },
 	];
 
-	const COLORS = ["hsl(var(--primary))", "hsl(var(--quaternary))", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
+	const COLORS = ["hsl(var(--primary))", "hsl(249, 15%, 18%)", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
 
 	return (
 		<ResponsiveContainer>
