@@ -3,6 +3,7 @@ import StatCard from "@/components/card/stat-card";
 import DonutChart from "@/components/chart/charts/donut";
 import LineChart from "@/components/chart/charts/line";
 import ProgressBar from "@/components/progress-bar";
+import RecentTransactions from "@/components/recent-transactions";
 import { CardContent } from "@/components/ui/card";
 import { upcomingPayments } from "@/mocks/data";
 
@@ -46,6 +47,11 @@ export default function Page() {
 							</li>
 						))}
 					</ul>
+				</CardContent>
+			</InfoCard>
+			<InfoCard heading="recent transactions" linkText="view all" path="/transactions">
+				<CardContent className="px-6 py-2">
+					<RecentTransactions />
 				</CardContent>
 			</InfoCard>
 		</div>
