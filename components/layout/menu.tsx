@@ -13,7 +13,7 @@ import { Separator } from "../ui/separator";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export default function Menu() {
-	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
+	const isSmallerScreen = useMediaQuery("(max-width: 767px)");
 	return (
 		<>
 			{isSmallerScreen && (
