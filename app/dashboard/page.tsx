@@ -5,7 +5,7 @@ import LineChart from "@/components/chart/charts/line";
 import ProgressBar from "@/components/progress-bar";
 import RecentTransactions from "@/components/recent-transactions";
 import { CardContent } from "@/components/ui/card";
-import { upcomingPayments } from "@/mocks/data";
+import UpcomingPayments from "@/components/upcoming-payments";
 
 export default function Page() {
 	return (
@@ -53,17 +53,7 @@ export default function Page() {
 			<div className="sm:col-span-12 sm:row-start-7 lg:col-span-6 lg:col-start-7 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-5 xl:-mt-14">
 				<InfoCard heading="upcoming payments" linkText="payments" path="/subscriptions">
 					<CardContent className="px-6 py-2">
-						<ul>
-							{upcomingPayments.map((payment, i) => (
-								<li key={i} className="mb-4 flex items-center justify-between">
-									<div className="flex flex-col">
-										<span className="font-bold">{payment.name}</span>
-										<span className="text-sm text-septenary">{payment.date}</span>
-									</div>
-									<span className="font-bold">£{payment.cost}</span>
-								</li>
-							))}
-						</ul>
+						<UpcomingPayments />
 					</CardContent>
 				</InfoCard>
 			</div>
