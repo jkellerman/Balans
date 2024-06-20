@@ -1,11 +1,15 @@
 "use client";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Cell, Label, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import customLegend from "../components/legend";
 import CustomTooltip from "../components/tooltip";
 
 export default function DonutChart() {
+	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
+
+	const legendPositionRight = isSmallerScreen ? 30 : 50;
 	const data = [
 		{ name: "Eating Out", spent: 20 },
 		{ name: "Groceries", spent: 25 },
@@ -47,7 +51,7 @@ export default function DonutChart() {
 					verticalAlign="middle"
 					layout="vertical"
 					iconSize={0}
-					wrapperStyle={{ top: 2, right: 30, fontSize: 14, lineHeight: "1em" }}
+					wrapperStyle={{ top: 2, right: legendPositionRight, fontSize: 14, lineHeight: "1em" }}
 					formatter={customLegend}
 				/>
 			</PieChart>
@@ -67,7 +71,7 @@ interface CustomLabelProps {
 function CustomLabel({ viewBox, value1, value2 }: CustomLabelProps) {
 	let { cx, cy } = viewBox as { cx: number; cy: number };
 
-	cy -= 5;
+	cy -= 7;
 
 	return (
 		<>

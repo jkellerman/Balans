@@ -13,7 +13,7 @@ export default function InfoCard({ children, heading, subheading, linkText, path
 	return (
 		<Card>
 			<CardHeader className="p-4 px-6">
-				<CardHeadingContainer className="max-w-[170px] sm:max-w-none">
+				<CardHeadingContainer className="max-w-[170px] md:max-w-none">
 					<CardHeading className="truncate text-base md:text-xl">{heading}</CardHeading>
 					{subheading && <CardSubHeading>{subheading}</CardSubHeading>}
 				</CardHeadingContainer>

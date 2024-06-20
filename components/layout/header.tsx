@@ -7,7 +7,7 @@ import Menu from "./menu";
 
 export default function Header() {
 	return (
-		<header className="flex">
+		<header className="flex xl:mx-auto xl:w-full xl:max-w-[1600px]">
 			<div className="flex w-full items-center">
 				<div className="flex w-full flex-wrap items-center justify-between gap-y-4 px-5 py-6 transition-colors md:flex-nowrap md:py-8 lg:gap-0 lg:px-8">
 					<div className="flex w-full items-center justify-between md:w-auto">
