@@ -1,73 +1,65 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { activityData } from "@/mocks/data";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import customLegend from "../components/legend";
 import CustomTooltip from "../components/tooltip";
 
-const data = [
-	{ name: "Jun 19", expenses: 200, income: 400 },
-	{ name: "Jun 20", expenses: 300, income: 798 },
-	{ name: "Jun 21", expenses: 400, income: 300 },
-	{ name: "Jun 22", expenses: 680, income: 800 },
-	{ name: "Jun 23", expenses: 590, income: 300 },
-	{ name: "Jun 24", expenses: 290, income: 400 },
-	{ name: "Jun 25", expenses: 390, income: 200 },
-	{ name: "Jun 26", expenses: 390, income: 100 },
-];
-
 export default function MyLineChart() {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
 
 	return (
-		<ResponsiveContainer>
-			<LineChart
-				width={600}
-				height={300}
-				data={data}
-				margin={{
-					top: -40,
-					right: 30,
-					left: 20,
-					bottom: 50,
-				}}
-			>
-				<CartesianGrid
-					horizontal={false}
-					vertical={isSmallerScreen ? false : true}
-					stroke="hsl(var(--senary))"
-					strokeOpacity={0.5}
-				/>
+		<>
+			<ResponsiveContainer>
+				<LineChart
+					width={600}
+					height={300}
+					data={activityData}
+					margin={{
+						top: -40,
+						right: 30,
+						left: 20,
+						bottom: 50,
+					}}
+				>
+					<CartesianGrid
+						horizontal={false}
+						vertical={isSmallerScreen ? false : true}
+						stroke="hsl(var(--senary))"
+						strokeOpacity={0.5}
+					/>
 
-				<XAxis dataKey="name" fontSize={12} axisLine={false} tickLine={false} tickMargin={20} />
-				<YAxis fontSize={12} axisLine={false} tickLine={false} tickMargin={20} padding={{ top: 6 }} />
-				<Tooltip
-					wrapperStyle={{ color: "white", borderRadius: "6px", padding: "5px" }}
-					cursor={<CustomCursor width={50} height="60%" />}
-					content={<CustomTooltip />}
-				/>
-				<Legend iconSize={0} formatter={customLegend} verticalAlign="top" align="right" />
-				<Line
-					type="monotone"
-					dataKey="income"
-					stroke="hsl(var(--tertiary))"
-					strokeWidth={3}
-					activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" />}
-					dot={false}
-				/>
-				<Line
-					type="monotone"
-					dataKey="expenses"
-					stroke="hsl(var(--secondary))"
-					strokeWidth={3}
-					dot={false}
-					activeDot={false}
-				/>
-			</LineChart>
-		</ResponsiveContainer>
+					<XAxis dataKey="name" fontSize={12} axisLine={false} tickLine={false} tickMargin={20} />
+					<YAxis fontSize={12} axisLine={false} tickLine={false} tickMargin={20} padding={{ top: 6 }} />
+					<Tooltip
+						wrapperStyle={{ color: "white", borderRadius: "6px", padding: "5px" }}
+						cursor={<CustomCursor width={50} height="60%" />}
+						content={<CustomTooltip />}
+					/>
+					<Legend iconSize={0} formatter={customLegend} verticalAlign="top" align="right" />
+					<Line
+						type="monotone"
+						dataKey="income"
+						stroke="hsl(var(--tertiary))"
+						strokeWidth={3}
+						activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="income" />}
+						dot={false}
+					/>
+					<Line
+						type="monotone"
+						dataKey="expenses"
+						stroke="hsl(var(--secondary))"
+						strokeWidth={3}
+						dot={false}
+						activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="expenses" />}
+					/>
+				</LineChart>
+			</ResponsiveContainer>
+		</>
 	);
 }
 
@@ -102,7 +94,9 @@ const CustomCursor = ({ points, width, height }: CustomCursorProps) => {
 };
 
 const CustomActiveDot = (props: any) => {
-	const { cx, cy, stroke, fill } = props;
+	const { cx, cy, stroke, fill, payload, line } = props;
+	if (!payload[line]) return null;
+
 	return (
 		<g>
 			<circle cx={cx} cy={cy} r={6} stroke={stroke} fill="none" strokeWidth={6} />

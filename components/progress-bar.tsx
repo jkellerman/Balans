@@ -11,5 +11,5 @@ export default function ProgressBar() {
 		const timer = setTimeout(() => setProgress(75), 500);
 		return () => clearTimeout(timer);
 	}, []);
-	return <Progress value={progress} max={100} style={{ width: `${progress}%` }} />;
+	return <Progress value={progress} max={100} style={{ width: `${progress}%` }} className="mb-2" />;
 }

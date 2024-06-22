@@ -12,7 +12,7 @@ interface InfoCardProps {
 export default function InfoCard({ children, heading, subheading, linkText, path }: InfoCardProps) {
 	return (
 		<Card>
-			<CardHeader className="p-4 px-6">
+			<CardHeader className="z-50 p-5 px-7">
 				<CardHeadingContainer className="max-w-[170px] md:max-w-none">
 					<CardHeading className="truncate text-base md:text-xl">{heading}</CardHeading>
 					{subheading && <CardSubHeading>{subheading}</CardSubHeading>}

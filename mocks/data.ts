@@ -29,3 +29,18 @@ export const recentTransactions = [
 		date: "26 Jun 2024",
 	},
 ];
+
+export const activityData = [
+	{ name: "Jan", expenses: 1900, income: 2290 },
+	{ name: "Feb", expenses: 1200, income: 2490 },
+	{ name: "Mar", expenses: 1500, income: 2100 },
+	{ name: "Apr", expenses: 1100, income: 2000 },
+	{ name: "May", expenses: 1600, income: 2290 },
+	{ name: "Jun", expenses: 1800, income: 2290 },
+	{ name: "Jul", expenses: 2600, income: 2190 },
+	{ name: "Aug", expenses: 2300, income: 2090 },
+	{ name: "Sep", expenses: 2600, income: 1800 },
+	{ name: "Oct", expenses: 1900, income: 2100 },
+	{ name: "Nov", expenses: 1200, income: 2210 },
+	{ name: "Dec", expenses: 3000, income: 2197 },
+];

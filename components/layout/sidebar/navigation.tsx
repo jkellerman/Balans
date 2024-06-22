@@ -2,7 +2,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import Icons from "@/components/icons";
-import { Tooltip, TooltipContent, TooltipPortal, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+	Tooltip,
+	TooltipArrow,
+	TooltipContent,
+	TooltipPortal,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Links, SettingsLinks } from "@/constants/navigation";
 import { Types } from "@/types";
 import clsx from "clsx";
@@ -68,6 +75,7 @@ const NavItem = ({ path, icon, name }: NavItemProps) => {
 						className="animate-enter-l rounded-md bg-foreground px-4 py-1 font-bold text-background"
 					>
 						{name}
+						<TooltipArrow fill="white" />
 					</TooltipContent>
 				</TooltipPortal>
 			</Tooltip>
