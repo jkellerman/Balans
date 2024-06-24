@@ -1,6 +1,9 @@
 interface CustomToolTipProps {
 	active?: boolean;
-	payload?: any;
+	payload?: {
+		dataKey: string;
+		value: number;
+	}[];
 }
 
 export default function CustomTooltip({ active, payload }: CustomToolTipProps) {
