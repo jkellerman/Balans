@@ -75,7 +75,7 @@ const NavItem = ({ path, icon, name }: NavItemProps) => {
 						className="animate-enter-l rounded-md bg-foreground px-4 py-1 font-bold text-background"
 					>
 						{name}
-						<TooltipArrow fill="white" />
+						<TooltipArrow fill="hsl(var(--foreground))" />
 					</TooltipContent>
 				</TooltipPortal>
 			</Tooltip>
