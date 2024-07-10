@@ -11,10 +11,10 @@ export default function Page() {
 	return (
 		<div className="mb-4 grid gap-4 px-5 sm:grid-cols-12 xl:mx-auto xl:w-full xl:max-w-[1600px] xl:grid-cols-10 xl:px-12">
 			<div className="sm:col-span-6 xl:col-span-2">
-				<StatCard heading="available balance" icon="Wallet" value={6500.85} />
+				<StatCard heading="available balance" icon="Wallet" value={6500.85} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 xl:col-span-2 xl:col-start-3">
-				<StatCard heading="total spending" icon="Wallet" value={250.8} />
+				<StatCard heading="total spending" icon="Wallet" value={250.8} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:row-span-3 sm:row-start-2 xl:col-span-3 xl:col-start-8 xl:row-span-2 xl:row-start-2">
 				<InfoCard heading="top spending" subheading="19 - 26 June" linkText="view all" path="/transactions">
@@ -24,7 +24,7 @@ export default function Page() {
 				</InfoCard>
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-2 xl:col-span-2 xl:col-start-5 xl:row-start-1">
-				<StatCard heading="total saved" icon="Piggy" value={300.85} />
+				<StatCard heading="total saved" icon="Piggy" value={300.85} isCurrency />
 			</div>
 			<div className="sm:col-span-12 sm:col-start-1 sm:row-start-5 lg:col-span-6 lg:col-start-1 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-4">
 				<InfoCard heading="Trip to Marrakesh" subheading="75% progress" linkText="manage spaces" path="/spaces">
@@ -38,10 +38,10 @@ export default function Page() {
 				</InfoCard>
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-3 xl:col-span-2 xl:col-start-7 xl:row-start-1">
-				<StatCard heading="total invested" icon="Investments" value={140} />
+				<StatCard heading="total invested" icon="Investments" value={140} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-4 xl:col-span-2 xl:col-start-9 xl:row-start-1">
-				<StatCard heading="subscriptions" icon="Subscriptions" value={20} />
+				<StatCard heading="subscriptions" icon="Subscriptions" value={20} isCurrency />
 			</div>
 			<div className="relative sm:col-span-12 sm:row-start-6 lg:max-h-[270px] xl:col-span-7 xl:col-start-1 xl:row-span-3 xl:row-start-2">
 				<InfoCard heading="Activity">

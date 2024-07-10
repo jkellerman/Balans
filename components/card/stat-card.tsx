@@ -7,9 +7,10 @@ interface CardProps {
 	heading: string;
 	icon: Types.Icons;
 	value: number;
+	isCurrency?: boolean;
 }
 
-export default function StatCard({ heading, icon, value }: CardProps) {
+export default function StatCard({ heading, icon, value, isCurrency }: CardProps) {
 	return (
 		<Card className="flex items-center gap-4 px-6 py-5">
 			<div className="flex h-10 w-10 items-center justify-center rounded-full bg-border text-secondary dark:bg-senary">
@@ -17,7 +18,7 @@ export default function StatCard({ heading, icon, value }: CardProps) {
 			</div>
 			<div>
 				<h2 className="text-sm capitalize text-septenary">{heading}</h2>
-				<span className="text-xl font-bold">£{value.toFixed(2)}</span>
+				<span className="text-xl font-bold">{isCurrency ? `£${value.toFixed(2)}` : value}</span>
 			</div>
 		</Card>
 	);
