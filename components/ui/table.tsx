@@ -12,7 +12,9 @@ const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableE
 Table.displayName = "Table";
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-	({ className, ...props }, ref) => <thead ref={ref} className={cn("uppercase text-septenary", className)} {...props} />
+	({ className, ...props }, ref) => (
+		<thead ref={ref} className={cn("bg-senary/60 capitalize text-septenary", className)} {...props} />
+	)
 );
 TableHeader.displayName = "TableHeader";
 
@@ -46,7 +48,7 @@ const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<
 		<th
 			ref={ref}
 			className={cn(
-				"text-muted-foreground text-left font-medium last-of-type:pr-4 last-of-type:text-right [&:has([role=checkbox])]:pr-0",
+				"text-muted-foreground px-6 py-4 text-left font-medium first-of-type:rounded-l-xl last-of-type:rounded-r-xl last-of-type:pr-6 last-of-type:text-right [&:has([role=checkbox])]:pr-0",
 				className
 			)}
 			{...props}
@@ -59,7 +61,7 @@ const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<
 	({ className, ...props }, ref) => (
 		<td
 			ref={ref}
-			className={cn("p-4 pl-0 align-middle last-of-type:text-right [&:has([role=checkbox])]:pr-0", className)}
+			className={cn("truncate px-6 py-4 align-middle last-of-type:text-right [&:has([role=checkbox])]:pr-0", className)}
 			{...props}
 		/>
 	)
