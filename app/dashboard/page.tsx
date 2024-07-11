@@ -50,14 +50,14 @@ export default function Page() {
 					</CardContent>
 				</InfoCard>
 			</div>
-			<div className="sm:col-span-12 sm:row-start-7 lg:col-span-6 lg:col-start-7 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-5 xl:-mt-6">
+			<div className="sm:col-span-12 sm:row-start-7 lg:col-span-6 lg:col-start-7 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-5 xl:-mt-14">
 				<InfoCard heading="upcoming payments" linkText="payments" path="/subscriptions">
 					<CardContent className="px-7 py-2">
 						<UpcomingPayments />
 					</CardContent>
 				</InfoCard>
 			</div>
-			<div className="sm:col-span-12 sm:row-start-8 lg:row-start-7 xl:col-span-7 xl:col-start-1 xl:row-span-2 xl:row-start-4 xl:mt-16">
+			<div className="overflow-auto sm:col-span-12 sm:row-start-8 lg:row-start-7 lg:mt-16 xl:col-span-7 xl:col-start-1 xl:row-span-2 xl:row-start-4">
 				<InfoCard heading="recent transactions" linkText="view all" path="/transactions">
 					<CardContent className="px-7 py-2">
 						<RecentTransactions />
