@@ -44,3 +44,11 @@ export const activityData = [
 	{ name: "Nov", expenses: 1200, income: 2210 },
 	{ name: "Dec", expenses: 3000, income: 2197 },
 ];
+
+export const IncomeCategories = [
+	{ name: "view all" },
+	{ name: "day job" },
+	{ name: "side hustle" },
+	{ name: "freelancing" },
+	{ name: "other" },
+];
