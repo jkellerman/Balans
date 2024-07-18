@@ -1,6 +1,8 @@
 export declare namespace Types {
 	export type Icons =
 		| "Calendar"
+		| "Check"
+		| "ChevronDown"
 		| "ChevronRight"
 		| "Close"
 		| "Expenses"
@@ -9,6 +11,7 @@ export declare namespace Types {
 		| "Home"
 		| "Income"
 		| "Investments"
+		| "MagnifyingGlass"
 		| "Piggy"
 		| "Settings"
 		| "Spaces"
