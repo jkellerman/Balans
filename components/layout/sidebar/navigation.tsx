@@ -72,7 +72,7 @@ const NavItem = ({ path, icon, name }: NavItemProps) => {
 					<TooltipContent
 						side="right"
 						sideOffset={10}
-						className="animate-enter-l rounded-md bg-foreground px-4 py-1 font-bold text-background"
+						className="animate-enter-l rounded-xl bg-foreground px-4 py-1 font-bold text-background"
 					>
 						{name}
 						<TooltipArrow fill="hsl(var(--foreground))" />

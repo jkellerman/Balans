@@ -12,7 +12,7 @@ export default function DonutChart() {
 	const legendPositionRight = isSmallerScreen ? 30 : 50;
 	const data = [
 		{ name: "Eating Out", spent: 20 },
-		{ name: "Groceries", spent: 25 },
+		{ name: "Groceries", spent: 70 },
 		{ name: "Shopping", spent: 10 },
 		{ name: "Transport", spent: 10 },
 	];
