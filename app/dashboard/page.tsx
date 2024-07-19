@@ -3,7 +3,7 @@ import StatCard from "@/components/card/stat-card";
 import DonutChart from "@/components/chart/charts/donut";
 import LineChart from "@/components/chart/charts/line";
 import ProgressBar from "@/components/progress-bar";
-import RecentTransactions from "@/components/recent-transactions";
+import RecentTransactions from "@/components/table/recent-transactions";
 import { CardContent } from "@/components/ui/card";
 import UpcomingPayments from "@/components/upcoming-payments";
 
