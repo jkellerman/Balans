@@ -30,6 +30,39 @@ export const recentTransactions = [
 	},
 ];
 
+export const IncomePayments = [
+	{
+		name: "salary",
+		category: "day job",
+		amount: 2700.78,
+		date: "26 Jun 2024",
+	},
+	{
+		name: "etsy",
+		category: "side hustle",
+		amount: 100,
+		date: "25 Jun 2024",
+	},
+	{
+		name: "etsy",
+		category: "side hustle",
+		amount: 50,
+		date: "26 Jun 2024",
+	},
+	{
+		name: "content writing",
+		category: "freelancing",
+		amount: 500,
+		date: "26 Jun 2024",
+	},
+	{
+		name: "vinted",
+		category: "side hustle",
+		amount: 90,
+		date: "26 Jun 2024",
+	},
+];
+
 export const activityData = [
 	{ name: "Jan", expenses: 1900, income: 2290 },
 	{ name: "Feb", expenses: 1200, income: 2490 },

@@ -5,6 +5,7 @@ export declare namespace Types {
 		| "ChevronDown"
 		| "ChevronRight"
 		| "Close"
+		| "Edit"
 		| "Expenses"
 		| "Hamburger"
 		| "Help"
@@ -18,6 +19,7 @@ export declare namespace Types {
 		| "Subscriptions"
 		| "Toggle"
 		| "Transactions"
+		| "Trash"
 		| "Wallet";
 
 	export interface Children {

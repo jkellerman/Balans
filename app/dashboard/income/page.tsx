@@ -1,6 +1,6 @@
 import InfoCard from "@/components/card/info-card";
 import StatCard from "@/components/card/stat-card";
-import RecentTransactions from "@/components/recent-transactions";
+import IncomePayments from "@/components/income-payments";
 import Search from "@/components/search";
 import { CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -36,7 +36,7 @@ export default function Page() {
 			<div className="overflow-auto sm:col-span-12 sm:row-span-3 sm:row-start-3 xl:col-span-10 xl:col-start-1 xl:row-start-2">
 				<InfoCard heading="payments">
 					<CardContent className="px-7 py-2">
-						<RecentTransactions />
+						<IncomePayments />
 					</CardContent>
 				</InfoCard>
 			</div>
