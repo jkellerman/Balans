@@ -62,6 +62,43 @@ export const IncomePayments = [
 		date: "26 Jun 2024",
 	},
 ];
+export const ExpensePayments = [
+	{
+		name: "iPhone 15 Pro MAX",
+		category: "shopping",
+		amount: 1099.0,
+		date: "26 Jun 2024",
+		paymentMethod: "credit card",
+	},
+	{
+		name: "Netflix",
+		category: "subscription",
+		amount: 10.99,
+		date: "25 Jun 2024",
+		paymentMethod: "debit card",
+	},
+	{
+		name: "Open AI",
+		category: "subscription",
+		amount: 20.0,
+		date: "26 Jun 2024",
+		paymentMethod: "debit card",
+	},
+	{
+		name: "Groceries",
+		category: "eating out",
+		amount: 15.0,
+		date: "26 Jun 2024",
+		paymentMethod: "credit card",
+	},
+	{
+		name: "McDonalds",
+		category: "eating out",
+		amount: 12.0,
+		date: "23 Jun 2024",
+		paymentMethod: "debit card",
+	},
+];
 
 export const activityData = [
 	{ name: "Jan", expenses: 1900, income: 2290 },
