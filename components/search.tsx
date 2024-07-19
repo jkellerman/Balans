@@ -8,7 +8,7 @@ export default function Search() {
 			</label>
 			<div className="relative flex flex-1 flex-shrink-0">
 				<input
-					className="peer block w-full rounded-md border border-border bg-background py-[7px] pl-10 pr-2 text-sm font-medium outline-1 outline-foreground/30 transition-colors"
+					className="peer block w-full rounded-md border border-border bg-senary/20 py-[7px] pl-10 pr-2 text-sm font-medium outline-1 outline-foreground/30 transition-colors"
 					placeholder="Search"
 					type="search"
 					name="search"
