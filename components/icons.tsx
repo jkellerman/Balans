@@ -45,6 +45,14 @@ export default function Icons({ className, icon }: IconsProps) {
 			/>
 		</svg>
 	);
+	const ChevronLeft = (
+		<svg className={className} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M3.587 6.025C3.587 6.225 3.687 6.425 3.787 6.525L7.087 9.825C7.387 10.125 7.887 10.125 8.187 9.825C8.487 9.525 8.487 9.025 8.187 8.725L5.487 6.025L8.187 3.325C8.487 3.025 8.487 2.525 8.187 2.225C7.887 1.925 7.387 1.925 7.087 2.225L3.887 5.425C3.687 5.625 3.587 5.825 3.587 6.025Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
 	const ChevronRight = (
 		<svg className={className} viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -83,6 +91,31 @@ export default function Icons({ className, icon }: IconsProps) {
 					<rect width="20" height="20" fill="currentColor" />
 				</clipPath>
 			</defs>
+		</svg>
+	);
+	const Ellipsis = (
+		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+			<path
+				d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+			<path
+				d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
 		</svg>
 	);
 	const Expenses = (
@@ -276,12 +309,16 @@ export default function Icons({ className, icon }: IconsProps) {
 			return Check;
 		case "ChevronDown":
 			return ChevronDown;
+		case "ChevronLeft":
+			return ChevronLeft;
 		case "ChevronRight":
 			return ChevronRight;
 		case "Close":
 			return Close;
 		case "Edit":
 			return Edit;
+		case "Ellipsis":
+			return Ellipsis;
 		case "Expenses":
 			return Expenses;
 		case "Hamburger":
