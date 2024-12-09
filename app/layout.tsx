@@ -20,7 +20,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={`${jakarta.className} h-full bg-background text-foreground antialiased`}>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 					{children}
 				</ThemeProvider>
 			</body>

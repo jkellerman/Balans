@@ -27,7 +27,7 @@ export default function Page() {
 				<StatCard heading="total saved" icon="Piggy" value={300.85} isCurrency />
 			</div>
 			<div className="sm:col-span-12 sm:col-start-1 sm:row-start-5 lg:col-span-6 lg:col-start-1 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-4">
-				<InfoCard heading="Trip to Marrakesh" subheading="75% progress" linkText="manage spaces" path="/spaces">
+				<InfoCard heading="Savings for holiday" subheading="75% progress" linkText="manage spaces" path="/spaces">
 					<CardContent className="flex flex-col px-7 pb-4 lg:h-[112px] lg:justify-end xl:h-auto">
 						<div className="mb-3 flex items-center gap-1">
 							<span className="font-bold">£562.50</span>

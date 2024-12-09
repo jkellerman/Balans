@@ -13,7 +13,6 @@ import Menu from "./menu";
 export default function Header() {
 	const pathname = usePathname();
 	const segment = pathname.split("/");
-	const greeting = getGreeting();
 	return (
 		<header className="flex xl:mx-auto xl:w-full xl:max-w-[1600px]">
 			<div className="flex w-full items-center">
@@ -28,7 +27,7 @@ export default function Header() {
 								<span className="sr-only">Home</span>
 							</Link>
 							<h1 className="text-lg font-bold capitalize lg:text-xl">
-								{segment[2] ? segment[2] : `${greeting}, Josh!`}
+								{segment[2] ? segment[2] : `${getGreeting()}, Josh!`}
 							</h1>
 						</div>
 						<Menu />
