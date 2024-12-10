@@ -5,9 +5,9 @@ export const upcomingPayments = [
 
 export const recentTransactions = [
 	{
-		name: "iPhone 15 Pro MAX",
-		category: "shopping",
-		amount: 1099.0,
+		name: "Trainline",
+		category: "transport",
+		amount: 40.0,
 		date: "26 Jun 2024",
 	},
 	{
@@ -17,7 +17,7 @@ export const recentTransactions = [
 		date: "25 Jun 2024",
 	},
 	{
-		name: "Open AI",
+		name: "Spotify",
 		category: "subscription",
 		amount: 20.0,
 		date: "26 Jun 2024",
@@ -33,7 +33,7 @@ export const recentTransactions = [
 export const IncomePayments = [
 	{
 		name: "salary",
-		category: "day job",
+		category: "job",
 		amount: 2700.78,
 		date: "26 Jun 2024",
 	},
@@ -64,9 +64,9 @@ export const IncomePayments = [
 ];
 export const ExpensePayments = [
 	{
-		name: "iPhone 15 Pro MAX",
-		category: "shopping",
-		amount: 1099.0,
+		name: "Trainline",
+		category: "transport",
+		amount: 40.0,
 		date: "26 Jun 2024",
 		paymentMethod: "credit card",
 	},
@@ -78,7 +78,7 @@ export const ExpensePayments = [
 		paymentMethod: "debit card",
 	},
 	{
-		name: "Open AI",
+		name: "Spotify",
 		category: "subscription",
 		amount: 20.0,
 		date: "26 Jun 2024",
@@ -117,7 +117,7 @@ export const activityData = [
 
 export const IncomeCategories = [
 	{ name: "view all" },
-	{ name: "day job" },
+	{ name: "job" },
 	{ name: "side hustle" },
 	{ name: "freelancing" },
 	{ name: "other" },
