@@ -22,10 +22,10 @@ export default function Icons({ className, icon }: IconsProps) {
 	);
 	const Check = (
 		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<g clip-path="url(#clip0_893_152)">
+			<g clipPath="url(#clip0_893_152)">
 				<path
-					fill-rule="evenodd"
-					clip-rule="evenodd"
+					fillRule="evenodd"
+					clipRule="evenodd"
 					d="M19.495 3.13299C19.7166 2.9997 19.9812 2.95742 20.2333 3.01504C20.4853 3.07265 20.7053 3.22568 20.847 3.44199L21.837 4.95199C21.9661 5.14925 22.0213 5.38576 21.9929 5.61978C21.9646 5.85379 21.8544 6.07027 21.682 6.23099L21.679 6.23499L21.665 6.24799L21.608 6.30099L21.383 6.51599C20.138 7.72365 18.9308 8.96958 17.763 10.252C15.566 12.668 12.957 15.83 11.201 18.898C10.711 19.754 9.514 19.938 8.804 19.199L2.319 12.461C2.22606 12.3644 2.1535 12.2501 2.10561 12.1249C2.05773 11.9997 2.03551 11.8661 2.04026 11.7322C2.04502 11.5982 2.07666 11.4666 2.13331 11.3451C2.18995 11.2236 2.27044 11.1148 2.37 11.025L4.33 9.25699C4.50224 9.1017 4.7231 9.0111 4.95477 9.00071C5.18645 8.99031 5.41454 9.06075 5.6 9.19999L8.909 11.681C14.078 6.58399 17.009 4.62799 19.495 3.13299Z"
 					fill="currentColor"
 				/>
@@ -76,7 +76,7 @@ export default function Icons({ className, icon }: IconsProps) {
 	);
 	const Edit = (
 		<svg className={className} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<g clip-path="url(#clip0_847_37)">
+			<g clipPath="url(#clip0_847_37)">
 				<path
 					d="M2.34442 12.8889L1.28887 17.4444C1.25245 17.6109 1.2537 17.7835 1.29252 17.9495C1.33134 18.1155 1.40675 18.2707 1.51323 18.4038C1.61972 18.5369 1.7546 18.6446 1.90802 18.7189C2.06144 18.7932 2.22952 18.8323 2.39998 18.8333C2.47938 18.8419 2.55947 18.8419 2.63887 18.8333L7.2222 17.7778L16.0222 9.01108L11.1111 4.11108L2.34442 12.8889Z"
 					fill="#EAE6F1"
@@ -98,23 +98,23 @@ export default function Icons({ className, icon }: IconsProps) {
 			<path
 				d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
 				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 			<path
 				d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
 				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 			<path
 				d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
 				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 		</svg>
 	);
