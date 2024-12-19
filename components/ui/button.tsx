@@ -10,6 +10,10 @@ const buttonVariants = cva("inline-flex items-center justify-center rounded-md "
 			primary:
 				"relative flex h-[50px] w-40 items-center justify-center overflow-hidden bg-primary text-quinary shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-foreground before:duration-500 before:ease-out hover:shadow-secondary hover:before:h-56 hover:before:w-56",
 			secondary: "",
+			tertiary:
+				"bg-primary text-background font-bold hover:bg-primary hover:text-background hover:transition-colors hover:duration-300",
+			quaternary:
+				"text-foreground font-bold hover:bg-primary hover:text-background hover:transition-colors hover:duration-300",
 			destructive: "",
 			ghost: "text-tertiary",
 		},
