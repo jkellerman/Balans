@@ -46,10 +46,12 @@ export default function Icons({ className, icon }: IconsProps) {
 		</svg>
 	);
 	const ChevronLeft = (
-		<svg className={className} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg className={className} viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
-				d="M3.587 6.025C3.587 6.225 3.687 6.425 3.787 6.525L7.087 9.825C7.387 10.125 7.887 10.125 8.187 9.825C8.487 9.525 8.487 9.025 8.187 8.725L5.487 6.025L8.187 3.325C8.487 3.025 8.487 2.525 8.187 2.225C7.887 1.925 7.387 1.925 7.087 2.225L3.887 5.425C3.687 5.625 3.587 5.825 3.587 6.025Z"
-				fill="currentColor"
+				d="M4.85718 0.571411L1.42861 3.99998L4.85718 7.42855"
+				stroke="currentColor"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 		</svg>
 	);
