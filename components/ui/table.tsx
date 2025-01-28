@@ -13,7 +13,7 @@ Table.displayName = "Table";
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
 	({ className, ...props }, ref) => (
-		<thead ref={ref} className={cn("bg-senary/60 capitalize text-septenary", className)} {...props} />
+		<thead ref={ref} className={cn("bg-senary capitalize text-septenary first:rounded-l-xl", className)} {...props} />
 	)
 );
 TableHeader.displayName = "TableHeader";
