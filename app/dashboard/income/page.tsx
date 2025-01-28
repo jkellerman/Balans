@@ -12,13 +12,13 @@ export default function Page() {
 		<>
 			<div className="mb-4 grid gap-4 px-5 sm:grid-cols-12 xl:mx-auto xl:w-full xl:max-w-[1600px] xl:grid-cols-10 xl:px-12">
 				<div className="sm:col-span-6 sm:col-start-1 sm:row-start-2 xl:col-span-4 xl:col-start-7 xl:row-start-1">
-					<div className="rounded-xl border border-border bg-senary/20 px-7 py-3">
+					<div className="rounded-xl border border-border px-7 py-3 dark:bg-senary/20">
 						<div className="flex flex-col gap-4 xl:flex-row">
 							<div className="xl:w-1/2">
 								<Search />
 							</div>
 							<div className="flex flex-col gap-2 xl:w-1/2">
-								<h3 className="text-sm text-septenary">Category</h3>
+								<h3 className="text-sm text-quinary/60 dark:text-septenary">Category</h3>
 								<Select defaultValue={IncomeCategories[0].name}>
 									<SelectTrigger>
 										<SelectValue placeholder="View all..." />

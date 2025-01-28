@@ -7,7 +7,7 @@ export default function UpcomingPayments() {
 				<li key={i} className="mb-4 flex items-center justify-between">
 					<div className="flex flex-col">
 						<span className="font-bold">{payment.name}</span>
-						<span className="text-sm text-septenary">{payment.date}</span>
+						<span className="text-sm text-quinary/60 dark:text-septenary">{payment.date}</span>
 					</div>
 					<span className="font-bold">£{payment.cost}</span>
 				</li>

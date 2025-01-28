@@ -4,15 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { getGreeting } from "@/lib/formatter";
+import { useTheme } from "next-themes";
 
 import Icons from "../icons";
 import Logo from "../logo";
+import { themes } from "../theme";
 import Avatar from "../ui/avatar";
+import {
+	DropdownMenu,
+	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuPortal,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import Menu from "./menu";
 
 export default function Header() {
 	const pathname = usePathname();
 	const segment = pathname.split("/");
+	const { setTheme, theme: currentTheme } = useTheme();
+
 	return (
 		<header className="flex xl:mx-auto xl:w-full xl:max-w-[1600px]">
 			<div className="flex w-full items-center">
@@ -34,7 +48,7 @@ export default function Header() {
 					</div>
 					{/* TODO: Create UI component for datepicker */}
 					<div className="flex w-full items-center gap-4 xs:w-auto lg:gap-9">
-						<div className="flex w-full items-center rounded-md bg-senary text-sm xs:w-auto">
+						<div className="flex w-full items-center rounded-md bg-senary/40 text-sm dark:bg-senary xs:w-auto">
 							<div className="flex w-3/5 items-center gap-2 border-r border-background px-4 py-3 xs:w-4/5">
 								<span className="text-septenary">
 									<Icons icon="Calendar" className="h-6 w-6" />
@@ -48,7 +62,39 @@ export default function Header() {
 								</span>
 							</div>
 						</div>
-						<Avatar />
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<button className="rounded-full">
+									<Avatar />
+								</button>
+							</DropdownMenuTrigger>
+							<DropdownMenuPortal>
+								<DropdownMenuContent className="-translate-x-5" side="bottom">
+									<DropdownMenuGroup>
+										{themes.map((theme, i) => (
+											<DropdownMenuCheckboxItem
+												checked={theme === currentTheme}
+												icon={theme}
+												key={i}
+												onClick={() => setTheme(`${theme}`)}
+											>
+												{theme}
+											</DropdownMenuCheckboxItem>
+										))}
+									</DropdownMenuGroup>
+									<DropdownMenuSeparator />
+									<DropdownMenuGroup>
+										<DropdownMenuItem icon="Settings">
+											<Link href="settings">settings</Link>
+										</DropdownMenuItem>
+
+										<DropdownMenuItem icon="logout" disabled>
+											Logout
+										</DropdownMenuItem>
+									</DropdownMenuGroup>
+								</DropdownMenuContent>
+							</DropdownMenuPortal>
+						</DropdownMenu>
 					</div>
 				</div>
 			</div>

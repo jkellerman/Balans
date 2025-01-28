@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 
 import Icons from "./icons";
 
-const themes = ["system", "dark", "light"];
+export const themes = ["system", "dark", "light"] as const;
 
 const ThemeProvider = () => {
 	const { setTheme, theme: currentTheme } = useTheme();
