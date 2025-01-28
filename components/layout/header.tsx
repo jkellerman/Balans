@@ -4,15 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { getGreeting } from "@/lib/formatter";
+import { useTheme } from "next-themes";
 
 import Icons from "../icons";
 import Logo from "../logo";
+import { themes } from "../theme";
 import Avatar from "../ui/avatar";
+import {
+	DropdownMenu,
+	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuPortal,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import Menu from "./menu";
 
 export default function Header() {
 	const pathname = usePathname();
 	const segment = pathname.split("/");
+	const { setTheme, theme: currentTheme } = useTheme();
+
 	return (
 		<header className="flex xl:mx-auto xl:w-full xl:max-w-[1600px]">
 			<div className="flex w-full items-center">
@@ -48,7 +62,39 @@ export default function Header() {
 								</span>
 							</div>
 						</div>
-						<Avatar />
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<button className="rounded-full">
+									<Avatar />
+								</button>
+							</DropdownMenuTrigger>
+							<DropdownMenuPortal>
+								<DropdownMenuContent className="-translate-x-5" side="bottom">
+									<DropdownMenuGroup>
+										{themes.map((theme, i) => (
+											<DropdownMenuCheckboxItem
+												checked={theme === currentTheme}
+												icon={theme}
+												key={i}
+												onClick={() => setTheme(`${theme}`)}
+											>
+												{theme}
+											</DropdownMenuCheckboxItem>
+										))}
+									</DropdownMenuGroup>
+									<DropdownMenuSeparator />
+									<DropdownMenuGroup>
+										<DropdownMenuItem icon="Settings">
+											<Link href="settings">settings</Link>
+										</DropdownMenuItem>
+
+										<DropdownMenuItem icon="logout" disabled>
+											Logout
+										</DropdownMenuItem>
+									</DropdownMenuGroup>
+								</DropdownMenuContent>
+							</DropdownMenuPortal>
+						</DropdownMenu>
 					</div>
 				</div>
 			</div>

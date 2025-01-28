@@ -76,6 +76,18 @@ export default function Icons({ className, icon }: IconsProps) {
 			/>
 		</svg>
 	);
+	const dark = (
+		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M20.958 15.3251C21.162 14.8391 20.579 14.4251 20.09 14.6411C19.1124 15.0697 18.0564 15.2903 16.989 15.2891C12.804 15.2891 9.412 11.9651 9.412 7.86406C9.41157 6.47956 9.80487 5.12349 10.546 3.95406C10.83 3.50606 10.489 2.88606 9.969 3.01806C5.96 4.04106 3 7.61306 3 11.8621C3 16.9091 7.175 21.0001 12.326 21.0001C16.226 21.0001 19.566 18.6551 20.958 15.3251Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M15.611 3.10304C15.081 2.74904 14.449 3.38104 14.802 3.91104L15.432 4.85604C15.6878 5.2391 15.8244 5.6894 15.8244 6.15004C15.8244 6.61067 15.6878 7.06097 15.432 7.44404L14.802 8.38904C14.449 8.91904 15.082 9.55104 15.612 9.19704L16.556 8.56704C16.9391 8.31122 17.3894 8.17468 17.85 8.17468C18.3106 8.17468 18.7609 8.31122 19.144 8.56704L20.089 9.19704C20.619 9.55104 21.251 8.91904 20.897 8.38904L20.267 7.44404C20.0112 7.06097 19.8747 6.61067 19.8747 6.15004C19.8747 5.6894 20.0112 5.2391 20.267 4.85604L20.897 3.91104C21.251 3.38104 20.619 2.74904 20.088 3.10304L19.144 3.73304C18.7609 3.98886 18.3106 4.12539 17.85 4.12539C17.3894 4.12539 16.9391 3.98886 16.556 3.73304L15.611 3.10304Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
 	const Edit = (
 		<svg className={className} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clipPath="url(#clip0_847_37)">
@@ -188,6 +200,32 @@ export default function Icons({ className, icon }: IconsProps) {
 			/>
 		</svg>
 	);
+	const light = (
+		<svg className={className} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15Z"
+				stroke="currentColor"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+			<path
+				d="M11 1V3M11 19V21M3.93 3.93L5.34 5.34M16.66 16.66L18.07 18.07M1 11H3M19 11H21M5.34 16.66L3.93 18.07M18.07 3.93L16.66 5.34"
+				stroke="currentColor"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+	const logout = (
+		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M5 21C4.45 21 3.97933 20.8043 3.588 20.413C3.19667 20.0217 3.00067 19.5507 3 19V5C3 4.45 3.196 3.97933 3.588 3.588C3.98 3.19667 4.45067 3.00067 5 3H11C11.2833 3 11.521 3.096 11.713 3.288C11.905 3.48 12.0007 3.71733 12 4C11.9993 4.28267 11.9033 4.52033 11.712 4.713C11.5207 4.90567 11.2833 5.00133 11 5H5V19H11C11.2833 19 11.521 19.096 11.713 19.288C11.905 19.48 12.0007 19.7173 12 20C11.9993 20.2827 11.9033 20.5203 11.712 20.713C11.5207 20.9057 11.2833 21.0013 11 21H5ZM17.175 13H10C9.71667 13 9.47933 12.904 9.288 12.712C9.09667 12.52 9.00067 12.2827 9 12C8.99933 11.7173 9.09533 11.48 9.288 11.288C9.48067 11.096 9.718 11 10 11H17.175L15.3 9.125C15.1167 8.94167 15.025 8.71667 15.025 8.45C15.025 8.18333 15.1167 7.95 15.3 7.75C15.4833 7.55 15.7167 7.44567 16 7.437C16.2833 7.42833 16.525 7.52433 16.725 7.725L20.3 11.3C20.5 11.5 20.6 11.7333 20.6 12C20.6 12.2667 20.5 12.5 20.3 12.7L16.725 16.275C16.525 16.475 16.2877 16.571 16.013 16.563C15.7383 16.555 15.5007 16.4507 15.3 16.25C15.1167 16.05 15.0293 15.8127 15.038 15.538C15.0467 15.2633 15.1423 15.034 15.325 14.85L17.175 13Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
 
 	const MagnifyingGlass = (
 		<svg className={className} viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,6 +296,14 @@ export default function Icons({ className, icon }: IconsProps) {
 			/>
 		</svg>
 	);
+	const system = (
+		<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M21 19C21.2549 19.0003 21.5 19.0979 21.6854 19.2728C21.8707 19.4478 21.9822 19.687 21.9972 19.9414C22.0121 20.1958 21.9293 20.4464 21.7657 20.6418C21.6021 20.8373 21.3701 20.9629 21.117 20.993L21 21H2.99999C2.74511 20.9997 2.49996 20.9021 2.31462 20.7272C2.12929 20.5522 2.01776 20.313 2.00282 20.0586C1.98788 19.8042 2.07067 19.5536 2.23426 19.3582C2.39785 19.1627 2.62989 19.0371 2.88299 19.007L2.99999 19H21ZM19 4C19.5046 3.99984 19.9906 4.19041 20.3605 4.5335C20.7305 4.87659 20.9571 5.34684 20.995 5.85L21 6V16C21.0002 16.5046 20.8096 16.9906 20.4665 17.3605C20.1234 17.7305 19.6531 17.9572 19.15 17.995L19 18H4.99999C4.49541 18.0002 4.00942 17.8096 3.63944 17.4665C3.26946 17.1234 3.04283 16.6532 3.00499 16.15L2.99999 16V6C2.99983 5.49542 3.1904 5.00943 3.53349 4.63945C3.87658 4.26947 4.34684 4.04284 4.84999 4.005L4.99999 4H19Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
 	const Toggle = (
 		<svg className={className} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -317,6 +363,8 @@ export default function Icons({ className, icon }: IconsProps) {
 			return ChevronRight;
 		case "Close":
 			return Close;
+		case "dark":
+			return dark;
 		case "Edit":
 			return Edit;
 		case "Ellipsis":
@@ -333,6 +381,10 @@ export default function Icons({ className, icon }: IconsProps) {
 			return Income;
 		case "Investments":
 			return Investments;
+		case "light":
+			return light;
+		case "logout":
+			return logout;
 		case "MagnifyingGlass":
 			return MagnifyingGlass;
 		case "Piggy":
@@ -343,6 +395,8 @@ export default function Icons({ className, icon }: IconsProps) {
 			return Spaces;
 		case "Subscriptions":
 			return Subscriptions;
+		case "system":
+			return system;
 		case "Toggle":
 			return Toggle;
 		case "Transactions":
