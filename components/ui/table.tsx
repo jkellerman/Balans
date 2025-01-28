@@ -13,7 +13,11 @@ Table.displayName = "Table";
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
 	({ className, ...props }, ref) => (
-		<thead ref={ref} className={cn("bg-senary capitalize text-septenary first:rounded-l-xl", className)} {...props} />
+		<thead
+			ref={ref}
+			className={cn("bg-senary/40 capitalize first:rounded-l-xl dark:bg-senary dark:text-septenary", className)}
+			{...props}
+		/>
 	)
 );
 TableHeader.displayName = "TableHeader";
@@ -61,7 +65,10 @@ const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<
 	({ className, ...props }, ref) => (
 		<td
 			ref={ref}
-			className={cn("truncate px-6 py-4 align-middle last-of-type:text-right [&:has([role=checkbox])]:pr-0", className)}
+			className={cn(
+				"truncate px-6 py-4 align-middle text-quinary/60 last-of-type:text-right dark:text-septenary [&:has([role=checkbox])]:pr-0",
+				className
+			)}
 			{...props}
 		/>
 	)

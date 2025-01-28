@@ -5,7 +5,7 @@ export default function customLegend(value: number, entry: any) {
 			<svg width="10" height="10">
 				<circle cx="5" cy="5" r="5" fill={color} />
 			</svg>
-			<span className="ml-2 text-sm capitalize text-septenary">{value}</span>
+			<span className="ml-2 text-sm capitalize text-quinary/60 dark:text-septenary">{value}</span>
 		</span>
 	);
 }

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
-	<div ref={ref} className={cn("rounded-xl border border-border bg-senary/20", className)} {...props} />
+	<div ref={ref} className={cn("rounded-xl border border-border dark:bg-senary/20", className)} {...props} />
 ));
 Card.displayName = "Card";
 
@@ -29,7 +29,9 @@ const CardHeading = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HT
 CardHeading.displayName = "CardHeading";
 
 const CardSubHeading = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
-	({ className, ...props }, ref) => <span ref={ref} className={cn("text-sm text-septenary", className)} {...props} />
+	({ className, ...props }, ref) => (
+		<span ref={ref} className={cn("text-sm text-quinary/60 dark:text-septenary", className)} {...props} />
+	)
 );
 CardSubHeading.displayName = "CardSubHeading";
 
