@@ -13,7 +13,7 @@ interface CardProps {
 export default function StatCard({ heading, icon, value, isCurrency }: CardProps) {
 	return (
 		<Card className="flex items-center gap-4 px-6 py-5">
-			<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full bg-senary/40 text-quinary dark:bg-senary dark:text-secondary">
+			<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full bg-senary/40 text-septenary dark:bg-senary dark:text-secondary">
 				<Icons icon={icon} className="h-4 w-4" />
 			</div>
 			<div>

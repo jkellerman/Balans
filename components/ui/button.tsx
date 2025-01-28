@@ -15,7 +15,7 @@ const buttonVariants = cva("inline-flex items-center justify-center rounded-md "
 			quaternary:
 				"text-foreground font-bold hover:bg-primary hover:text-background hover:transition-colors hover:duration-300",
 			destructive: "",
-			ghost: "dark:text-tertiary",
+			ghost: "text-quinary/60 dark:text-tertiary",
 		},
 		size: {
 			default: "px-5 py-2 text-sm font-bold",
