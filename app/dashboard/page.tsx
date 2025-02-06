@@ -45,12 +45,12 @@ export default function Page() {
 			</div>
 			<div className="relative sm:col-span-12 sm:row-start-6 lg:max-h-[270px] xl:col-span-7 xl:col-start-1 xl:row-span-3 xl:row-start-2">
 				<InfoCard heading="Activity">
-					<CardContent className="h-[170px] w-full lg:min-h-[270px] lg:px-2">
+					<CardContent className="h-[170px] w-full lg:min-h-[270px] lg:px-8">
 						<LineChart />
 					</CardContent>
 				</InfoCard>
 			</div>
-			<div className="sm:col-span-12 sm:row-start-7 lg:col-span-6 lg:col-start-7 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-5 xl:-mt-14">
+			<div className="sm:col-span-12 sm:row-start-7 lg:col-span-6 lg:col-start-7 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-5">
 				<InfoCard heading="upcoming payments" linkText="payments" path="/subscriptions">
 					<CardContent className="px-7 py-2">
 						<UpcomingPayments />
