@@ -8,7 +8,7 @@ import Navigation from "./navigation";
 
 export default function Sidebar() {
 	return (
-		<div className="hidden w-[100px] min-w-[100px] flex-col items-center border-r border-border py-8 transition-colors md:flex">
+		<div className="hidden w-[100px] min-w-[100px] flex-col items-center bg-white py-8 dark:border-r dark:border-border dark:bg-background md:flex">
 			<div className="mb-10">
 				<Link href="/">
 					<span aria-hidden="true">

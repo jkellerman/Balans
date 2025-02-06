@@ -22,7 +22,7 @@ html {
 
 @layer base {
 	:root {
-		--background: 0 0% 100%;
+		--background: 0 0% 98%;
 		--foreground: 240 14% 1%;
 
 		--primary: 94 85% 65%;

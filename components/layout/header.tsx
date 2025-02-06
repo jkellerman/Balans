@@ -48,7 +48,7 @@ export default function Header() {
 					</div>
 					{/* TODO: Create UI component for datepicker */}
 					<div className="flex w-full items-center gap-4 xs:w-auto lg:gap-9">
-						<div className="flex w-full items-center rounded-md bg-senary/40 text-sm dark:bg-senary xs:w-auto">
+						<div className="flex w-full items-center rounded-md bg-white text-sm shadow-sm dark:bg-senary xs:w-auto">
 							<div className="flex w-3/5 items-center gap-2 border-r border-background px-4 py-3 xs:w-4/5">
 								<span className="text-septenary">
 									<Icons icon="Calendar" className="h-6 w-6" />
