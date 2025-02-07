@@ -1,16 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { activityData } from "@/mocks/data";
+import { formatDateToMonth } from "@/lib/formatter";
+import { data } from "@/mocks/data";
+import { Transaction } from "@/types/data";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import customLegend from "../components/legend";
 import CustomTooltip from "../components/tooltip";
 
+interface MonthlyData {
+	name: string;
+	income: number;
+	expenses: number;
+}
+
 export default function MyLineChart() {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
+
+	// Process the transactions to group by month and calculate income/expenses
+	const getMonthlyData = (transactions: Transaction[]): MonthlyData[] => {
+		const monthlyData: Record<string, MonthlyData> = {};
+
+		transactions.forEach((transaction) => {
+			const month = formatDateToMonth(transaction.date);
+
+			if (!monthlyData[month]) {
+				monthlyData[month] = { name: month, income: 0, expenses: 0 };
+			}
+
+			if (transaction.type === "income") {
+				monthlyData[month].income += transaction.amount;
+			} else if (transaction.type === "expense") {
+				monthlyData[month].expenses += transaction.amount;
+			}
+		});
+
+		return Object.values(monthlyData);
+	};
+
+	// Prepare the monthly data for the chart
+	const activityData = getMonthlyData(data.transactions);
 
 	return (
 		<>
