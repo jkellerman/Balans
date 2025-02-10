@@ -15,12 +15,13 @@ export interface RecurringPayment {
 
 export interface Transaction extends FinancialEntity {
 	type: "income" | "expense";
-	recurring?: RecurringPayment;
 }
 
-export interface Subscription extends FinancialEntity {
-	type: "subscription";
-	recurring: RecurringPayment;
+export interface RecurringPayment extends Omit<FinancialEntity, "date"> {
+	type: "bills" | "subscription";
+	interval: Interval;
+	active: boolean;
+	firstPaymentDate: Date;
 }
 
 export interface Investment extends FinancialEntity {
@@ -29,7 +30,7 @@ export interface Investment extends FinancialEntity {
 
 export interface Data {
 	transactions: Transaction[];
-	subscriptions: Subscription[];
+	recurringPayments: RecurringPayment[];
 	investments: Investment[];
 }
 

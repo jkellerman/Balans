@@ -5,7 +5,7 @@ import React from "react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatDateToMonth } from "@/lib/formatter";
 import { data } from "@/mocks/data";
-import { Transaction } from "@/types/data";
+import { RecurringPayment, Transaction } from "@/types/data";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import customLegend from "../components/legend";
@@ -20,11 +20,41 @@ interface MonthlyData {
 export default function MyLineChart() {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
 
-	// Process the transactions to group by month and calculate income/expenses
-	const getMonthlyData = (transactions: Transaction[]): MonthlyData[] => {
+	const generateRecurringTransactions = (recurringPayments: RecurringPayment[]): Transaction[] => {
+		const transactions: Transaction[] = [];
+		const today = new Date();
+
+		recurringPayments.forEach((payment) => {
+			if (!payment.active) return;
+
+			const firstPaymentDate = new Date(payment.firstPaymentDate);
+			const paymentDay = firstPaymentDate.getDate();
+			let currentDate = new Date(firstPaymentDate);
+
+			while (currentDate <= today) {
+				transactions.push({
+					id: `recurring-${payment.id}-${currentDate.toISOString()}`,
+					type: "expense",
+					name: payment.name,
+					amount: payment.amount,
+					category: payment.category,
+					date: new Date(currentDate),
+				});
+
+				currentDate.setMonth(currentDate.getMonth() + 1);
+				currentDate.setDate(paymentDay);
+			}
+		});
+
+		return transactions;
+	};
+
+	const getMonthlyData = (transactions: Transaction[], recurringPayments: RecurringPayment[]): MonthlyData[] => {
 		const monthlyData: Record<string, MonthlyData> = {};
 
-		transactions.forEach((transaction) => {
+		const allTransactions = [...transactions, ...generateRecurringTransactions(recurringPayments)];
+
+		allTransactions.forEach((transaction) => {
 			const month = formatDateToMonth(transaction.date);
 
 			if (!monthlyData[month]) {
@@ -37,12 +67,10 @@ export default function MyLineChart() {
 				monthlyData[month].expenses += transaction.amount;
 			}
 		});
-
 		return Object.values(monthlyData);
 	};
 
-	// Prepare the monthly data for the chart
-	const activityData = getMonthlyData(data.transactions);
+	const activityData = getMonthlyData(data.transactions, data.recurringPayments);
 
 	return (
 		<>
