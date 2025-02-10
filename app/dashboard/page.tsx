@@ -72,7 +72,7 @@ export default function Page() {
 				</InfoCard>
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-2 xl:col-span-2 xl:col-start-5 xl:row-start-1">
-				<StatCard heading="total saved" icon="Piggy" value={300.85} isCurrency />
+				<StatCard heading="total saved" icon="Piggy" value={562.5} isCurrency />
 			</div>
 			<div className="sm:col-span-12 sm:col-start-1 sm:row-start-5 lg:col-span-6 lg:col-start-1 lg:row-start-5 xl:col-span-3 xl:col-start-8 xl:row-start-4">
 				<InfoCard heading="Savings for holiday" subheading="75% progress" linkText="manage spaces" path="/spaces">
