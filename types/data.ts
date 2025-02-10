@@ -1,7 +1,7 @@
 export type Interval = "weekly" | "monthly" | "yearly";
 
 export interface FinancialEntity {
-	id: number;
+	id: string | number;
 	name: string;
 	amount: number;
 	category: string;

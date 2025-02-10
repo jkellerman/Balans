@@ -6,6 +6,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatDateToMonth } from "@/lib/formatter";
 import { data } from "@/mocks/data";
 import { RecurringPayment, Transaction } from "@/types/data";
+import { nanoid } from "nanoid";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import customLegend from "../components/legend";
@@ -33,7 +34,7 @@ export default function MyLineChart() {
 
 			while (currentDate <= today) {
 				transactions.push({
-					id: `recurring-${payment.id}-${currentDate.toISOString()}`,
+					id: nanoid(),
 					type: "expense",
 					name: payment.name,
 					amount: payment.amount,
