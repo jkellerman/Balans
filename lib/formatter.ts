@@ -23,3 +23,7 @@ export const formatDateToMonth = (date: Date): string => {
 	const months: Month[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	return months[date.getMonth()];
 };
+
+export const formatCurrency = (amount: number) => {
+	return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(amount);
+};
