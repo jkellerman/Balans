@@ -19,7 +19,7 @@ export default function Page() {
 			.filter((transaction) => transaction.type === "expense")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
 
-		const totalSubscriptions = data.subscriptions.reduce((acc, subscription) => acc + subscription.amount, 0);
+		const totalSubscriptions = data.recurringPayments.reduce((acc, subscription) => acc + subscription.amount, 0);
 
 		return totalIncome - totalExpenses - totalSubscriptions;
 	};
@@ -29,7 +29,7 @@ export default function Page() {
 			.filter((transaction) => transaction.type === "expense")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
 
-		const totalSubscriptions = data.subscriptions.reduce((acc, subscription) => acc + subscription.amount, 0);
+		const totalSubscriptions = data.recurringPayments.reduce((acc, subscription) => acc + subscription.amount, 0);
 
 		return totalExpenses + totalSubscriptions;
 	};
@@ -39,8 +39,22 @@ export default function Page() {
 	};
 
 	const calculateTotalSubscriptions = (data: Data) => {
-		return data.subscriptions.reduce((acc, subscription) => acc + subscription.amount, 0);
+		return data.recurringPayments
+			.filter((payment) => payment.type === "subscription")
+			.reduce((acc, subscription) => acc + subscription.amount, 0);
 	};
+
+	// const getRecurringPayments = (data: Data) => {
+	// 	const recurringPayments = [
+	// 		...data.recurringPayments.filter((s) => s.active),
+	// 	];
+
+	// 	// Sort payments by date in descending order (most recent first)
+	// 	return recurringPayments.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+	// };
+
+	// const recurringPayments = getRecurringPayments(data);
+	// console.log(recurringPayments);
 
 	return (
 		<div className="mb-4 grid gap-4 px-5 sm:grid-cols-12 xl:mx-auto xl:w-full xl:max-w-[1600px] xl:grid-cols-10 xl:px-12">
