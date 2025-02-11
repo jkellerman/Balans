@@ -3,7 +3,7 @@
 import React from "react";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { formatDateToMonth } from "@/lib/formatter";
+import { formatDateToMonth } from "@/lib/date";
 import { data } from "@/mocks/data";
 import { RecurringPayment, Transaction } from "@/types/data";
 import { nanoid } from "nanoid";

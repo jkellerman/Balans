@@ -44,18 +44,6 @@ export default function Page() {
 			.reduce((acc, subscription) => acc + subscription.amount, 0);
 	};
 
-	// const getRecurringPayments = (data: Data) => {
-	// 	const recurringPayments = [
-	// 		...data.recurringPayments.filter((s) => s.active),
-	// 	];
-
-	// 	// Sort payments by date in descending order (most recent first)
-	// 	return recurringPayments.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-	// };
-
-	// const recurringPayments = getRecurringPayments(data);
-	// console.log(recurringPayments);
-
 	return (
 		<div className="mb-4 grid gap-4 px-5 sm:grid-cols-12 xl:mx-auto xl:w-full xl:max-w-[1600px] xl:grid-cols-10 xl:px-12">
 			<div className="sm:col-span-6 xl:col-span-2">

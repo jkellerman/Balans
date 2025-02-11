@@ -1,11 +1,5 @@
-import { getDateFromToday } from "@/lib/formatter";
+import { getDateFromToday } from "@/lib/date";
 import { Data } from "@/types/data";
-
-export const upcomingPayments = [
-	{ name: "Phone", date: "27th Jun 2024", cost: 12.86 },
-	{ name: "Rent", date: "27th Jun 2024", cost: 980.2 },
-	{ name: "Spotify", date: "29th Jun 2024", cost: 9.99 },
-];
 
 export const recentTransactions = [
 	{
@@ -332,7 +326,7 @@ export const data: Data = {
 			name: "Netflix",
 			amount: 15,
 			category: "Entertainment",
-			firstPaymentDate: getDateFromToday(-155),
+			firstPaymentDate: getDateFromToday(-142),
 			interval: "monthly",
 			active: true,
 		},
@@ -342,7 +336,7 @@ export const data: Data = {
 			name: "Spotify",
 			amount: 10,
 			category: "Music",
-			firstPaymentDate: getDateFromToday(-120),
+			firstPaymentDate: getDateFromToday(-131),
 			interval: "monthly",
 			active: true,
 		},
