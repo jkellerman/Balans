@@ -8,12 +8,11 @@ type Link = {
 
 export const Links: Link[] = [
 	{ name: "Home", href: "/dashboard", icon: "Home" },
-	{ name: "Income", href: "/dashboard/income", icon: "Income" },
-	{ name: "Expenses", href: "/dashboard/expenses", icon: "Expenses" },
-	{ name: "Transactions", href: "/dashboard/transactions", icon: "Transactions" },
+	{ name: "Transactions", href: "/dashboard/transactions", icon: "Expenses" },
 	{ name: "Investments", href: "/dashboard/investments", icon: "Investments" },
 	{ name: "Subscriptions", href: "/dashboard/subscriptions", icon: "Subscriptions" },
 	{ name: "Spaces", href: "/dashboard/spaces", icon: "Spaces" },
+	{ name: "Insights", href: "/dashboard/insights", icon: "Insights" },
 ];
 
 export const SettingsLinks: Link[] = [
