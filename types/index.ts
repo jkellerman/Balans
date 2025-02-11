@@ -14,6 +14,7 @@ export declare namespace Types {
 		| "Help"
 		| "Home"
 		| "Income"
+		| "Insights"
 		| "Investments"
 		| "light"
 		| "logout"

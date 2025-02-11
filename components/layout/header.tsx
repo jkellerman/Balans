@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { formatDate } from "@/lib/date";
 import { getGreeting } from "@/lib/formatter";
 import { useTheme } from "next-themes";
 
@@ -26,6 +27,9 @@ export default function Header() {
 	const pathname = usePathname();
 	const segment = pathname.split("/");
 	const { setTheme, theme: currentTheme } = useTheme();
+	const today = new Date();
+	const sixMonthsBefore = new Date();
+	sixMonthsBefore.setMonth(today.getMonth() - 6);
 
 	return (
 		<header className="flex xl:mx-auto xl:w-full xl:max-w-[1600px]">
@@ -53,10 +57,12 @@ export default function Header() {
 								<span className="text-septenary">
 									<Icons icon="Calendar" className="h-6 w-6" />
 								</span>
-								<span className="truncate">19 Jun, 2024 - 26 Jun, 2024</span>
+								<span className="truncate">
+									{formatDate(sixMonthsBefore)} - {formatDate(today)}
+								</span>
 							</div>
 							<div className="flex w-2/5 items-center justify-end gap-2 pl-4 pr-2">
-								<span className="truncate">Last 7 days</span>
+								<span className="truncate">Last 6 months</span>
 								<span className="text-septenary">
 									<Icons icon="Toggle" className="h-6 w-6" />
 								</span>

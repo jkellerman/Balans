@@ -1,9 +1,20 @@
 "use client";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { recentTransactions } from "@/mocks/data";
+import { formatDate } from "@/lib/date";
+import { formatCurrency } from "@/lib/formatter";
+import { generateRecurringTransactions } from "@/lib/utils";
+import { data } from "@/mocks/data";
 
 export default function RecentTransactions() {
+	const allTransactions = [];
+	allTransactions.push(...data.transactions);
+	allTransactions.push(...generateRecurringTransactions(data.recurringPayments));
+
+	// Sort the transactions by date, with the most recent first
+	const sortedTransactions = allTransactions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+	const recentTransactions = sortedTransactions.slice(0, 4);
 	return (
 		<Table>
 			<TableHeader>
@@ -22,8 +33,8 @@ export default function RecentTransactions() {
 							{item.name}
 						</TableCell>
 						<TableCell className="capitalize">{item.category}</TableCell>
-						<TableCell>£{item.amount.toFixed(2)} </TableCell>
-						<TableCell> {item.date} </TableCell>
+						<TableCell>{formatCurrency(item.type === "expense" ? -item.amount : item.amount)} </TableCell>
+						<TableCell>{formatDate(item.date)}</TableCell>
 					</TableRow>
 				))}
 			</TableBody>
