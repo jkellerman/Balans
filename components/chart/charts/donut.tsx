@@ -1,6 +1,10 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { formatCurrencyShort } from "@/lib/formatter";
+import { generateRecurringTransactions } from "@/lib/utils";
+import { data } from "@/mocks/data";
+import { RecurringPayment, Transaction } from "@/types/data";
 import { Cell, Label, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import customLegend from "../components/legend";
@@ -10,22 +14,37 @@ export default function DonutChart() {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
 
 	const legendPositionRight = isSmallerScreen ? 30 : 50;
-	const data = [
-		{ name: "Eating Out", spent: 20 },
-		{ name: "Groceries", spent: 70 },
-		{ name: "Shopping", spent: 10 },
-		{ name: "Transport", spent: 10 },
-	];
 
-	const COLORS = ["hsl(var(--primary))", "hsl(var(--senary))", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
+	const getTopSpending = (transactions: Transaction[], recurringPayments: RecurringPayment[]) => {
+		const expenseTransactions = transactions.filter((t) => t.type === "expense");
+		const recurringTransactions = generateRecurringTransactions(recurringPayments);
+
+		const allExpenses = [...expenseTransactions, ...recurringTransactions];
+
+		const spendingByCategory = allExpenses.reduce(
+			(acc, transaction) => {
+				acc[transaction.category] = (acc[transaction.category] || 0) + transaction.amount;
+				return acc;
+			},
+			{} as Record<string, number>
+		);
+
+		return Object.entries(spendingByCategory)
+			.map(([category, amount]) => ({ category, amount }))
+			.sort((a, b) => b.amount - a.amount);
+	};
+
+	const topSpending = getTopSpending(data.transactions, data.recurringPayments).slice(0, 4);
+
+	const COLORS = ["hsl(var(--senary))", "hsl(var(--primary))", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
 
 	return (
 		<ResponsiveContainer>
 			<PieChart>
 				<Pie
-					data={data}
-					dataKey="spent"
-					nameKey="name"
+					data={topSpending}
+					dataKey="amount"
+					nameKey="category"
 					cx="40%"
 					cy="45%"
 					innerRadius={42}
@@ -33,10 +52,16 @@ export default function DonutChart() {
 					labelLine={false}
 					stroke="none"
 				>
-					{data.map((_, index) => (
+					{topSpending.map((_, index) => (
 						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} style={{ outline: "none" }} />
 					))}
-					<Label width={30} position="center" content={<CustomLabel value1={259.61} value2={-80.51} />}></Label>
+					<Label
+						width={30}
+						position="center"
+						content={
+							<CustomLabel value1={topSpending.reduce((total, item) => total + item.amount, 0)} value2={-80.51} />
+						}
+					></Label>
 				</Pie>
 				<Tooltip
 					content={<CustomTooltip />}
@@ -77,7 +102,7 @@ function CustomLabel({ viewBox, value1, value2 }: CustomLabelProps) {
 		<>
 			<text x={cx} y={cy} textAnchor="middle" dominantBaseline="central">
 				<tspan x={cx} dy="0" fontSize="16" fontWeight="bold" fill="hsl(var(--foreground))">
-					£{value1}
+					{formatCurrencyShort(value1)}
 				</tspan>
 				<tspan x={cx} dy="1.5em" fontSize="12" fill="hsl(var(--tertiary))" fontWeight="bolder">
 					{value2}%

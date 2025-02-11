@@ -6,11 +6,17 @@ import ProgressBar from "@/components/progress-bar";
 import RecentTransactions from "@/components/table/recent-transactions";
 import { CardContent } from "@/components/ui/card";
 import UpcomingPayments from "@/components/upcoming-payments";
+import { formatDateShort } from "@/lib/date";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
 import { Data, RecurringPayment } from "@/types/data";
 
 export default function Page() {
+	const today = new Date();
+	const sixMonthsBefore = new Date();
+	sixMonthsBefore.setMonth(today.getMonth() - 6);
+
+	const donutSubHeading = `${formatDateShort(sixMonthsBefore)} - ${formatDateShort(today)}`;
 	const calculateRemainingAmount = (data: Data) => {
 		const totalIncome = data.transactions
 			.filter((transaction) => transaction.type === "income")
@@ -58,7 +64,7 @@ export default function Page() {
 				<StatCard heading="total spending" icon="Expenses" value={calculateTotalSpending(data)} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:row-span-3 sm:row-start-2 xl:col-span-3 xl:col-start-8 xl:row-span-2 xl:row-start-2">
-				<InfoCard heading="top spending" subheading="19 - 26 June" linkText="view all" path="/transactions">
+				<InfoCard heading="top spending" subheading={donutSubHeading} linkText="view insights" path="/insights">
 					<CardContent className="h-[170px] w-full sm:h-[220px] xl:h-[180px]">
 						<DonutChart />
 					</CardContent>
