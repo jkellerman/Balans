@@ -48,6 +48,30 @@ export const formatDate = (date: Date) => {
 
 	return `${day}${suffix(day)} ${formattedDate.split(" ")[1]} ${formattedDate.split(" ")[2]}`;
 };
+export const formatDateShort = (date: Date) => {
+	const day = date.getDate();
+	const suffix = (day: number) => {
+		if (day > 3 && day < 21) return "th";
+		switch (day % 10) {
+			case 1:
+				return "st";
+			case 2:
+				return "nd";
+			case 3:
+				return "rd";
+			default:
+				return "th";
+		}
+	};
+
+	const formattedDate = new Intl.DateTimeFormat("en-GB", {
+		day: "numeric",
+		month: "short",
+		year: "2-digit",
+	}).format(date);
+
+	return `${day}${suffix(day)} ${formattedDate.split(" ")[1]} ${formattedDate.split(" ")[2]}`;
+};
 
 // Function to format the date and get the month name ('Jan', 'Feb', etc.)
 export const formatDateToMonth = (date: Date): string => {

@@ -15,3 +15,13 @@ export function getGreeting(): string {
 export const formatCurrency = (amount: number) => {
 	return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(amount);
 };
+
+export const formatCurrencyShort = (amount: number) => {
+	if (amount >= 1_000_000) {
+		return `£${(amount / 1_000_000).toFixed(2)}m`;
+	} else if (amount >= 10_000) {
+		return `£${(amount / 1_000).toFixed(1)}k`;
+	} else {
+		return `£${amount.toFixed(2)}`;
+	}
+};
