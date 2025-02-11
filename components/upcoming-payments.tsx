@@ -1,10 +1,14 @@
 "use client";
 
+import React from "react";
+
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatDate } from "@/lib/date";
 import { formatCurrency } from "@/lib/formatter";
 import { data } from "@/mocks/data";
 import { RecurringPayment } from "@/types/data";
+
+import Fallback from "./no-data-fallback";
 
 export default function UpcomingPayments() {
 	const isSmallerScreen = useMediaQuery("(max-width: 1280px)");
@@ -48,16 +52,24 @@ export default function UpcomingPayments() {
 	const payments = isSmallerScreen ? upcomingPayments.slice(0, 2) : upcomingPayments.slice(0, 3);
 
 	return (
-		<ul className="xl:mb-6">
-			{payments.map((payment, i) => (
-				<li key={i} className="mb-4 flex items-center justify-between xl:mb-2">
-					<div className="flex flex-col">
-						<span className="font-bold">{payment.name}</span>
-						<span className="text-sm text-quinary/60 dark:text-septenary">{formatDate(payment.nextPaymentDate)}</span>
-					</div>
-					<span className="font-bold">{formatCurrency(payment.amount)}</span>
-				</li>
-			))}
-		</ul>
+		<div className="flex h-full items-center justify-center">
+			{payments && payments.length ? (
+				<ul className="w-full xl:mb-5">
+					{payments.map((payment, i) => (
+						<li key={i} className="mb-4 flex items-center justify-between xl:mb-2">
+							<div className="flex flex-col">
+								<span className="font-bold">{payment.name}</span>
+								<span className="text-sm text-quinary/60 dark:text-septenary">
+									{formatDate(payment.nextPaymentDate)}
+								</span>
+							</div>
+							<span className="font-bold">{formatCurrency(payment.amount)}</span>
+						</li>
+					))}
+				</ul>
+			) : (
+				<Fallback />
+			)}
+		</div>
 	);
 }

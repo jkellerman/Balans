@@ -2,6 +2,7 @@
 
 import React from "react";
 
+import Fallback from "@/components/no-data-fallback";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatDateToMonth } from "@/lib/date";
 import { generateRecurringTransactions } from "@/lib/utils";
@@ -45,53 +46,57 @@ export default function MyLineChart() {
 	const activityData = getMonthlyData(data.transactions, data.recurringPayments);
 
 	return (
-		<>
-			<ResponsiveContainer>
-				<LineChart
-					width={600}
-					height={300}
-					data={activityData}
-					margin={{
-						top: -40,
-						right: 30,
-						left: 20,
-						bottom: 50,
-					}}
-				>
-					<CartesianGrid
-						horizontal={false}
-						vertical={isSmallerScreen ? false : true}
-						stroke="hsl(var(--senary))"
-						strokeOpacity={0.5}
-					/>
+		<div className="flex h-full flex-row items-center justify-center">
+			{activityData && activityData.length > 0 ? (
+				<ResponsiveContainer>
+					<LineChart
+						width={600}
+						height={300}
+						data={activityData}
+						margin={{
+							top: -40,
+							right: 30,
+							left: 20,
+							bottom: 50,
+						}}
+					>
+						<CartesianGrid
+							horizontal={false}
+							vertical={isSmallerScreen ? false : true}
+							stroke="hsl(var(--senary))"
+							strokeOpacity={0.5}
+						/>
 
-					<XAxis dataKey="name" fontSize={12} axisLine={false} tickLine={false} tickMargin={20} />
-					<YAxis fontSize={12} axisLine={false} tickLine={false} tickMargin={20} padding={{ top: 6 }} />
-					<Tooltip
-						wrapperStyle={{ color: "white", borderRadius: "6px", padding: "5px" }}
-						cursor={<CustomCursor width={50} height="60%" />}
-						content={<CustomTooltip />}
-					/>
-					<Legend iconSize={0} formatter={customLegend} verticalAlign="top" align="right" />
-					<Line
-						type="monotone"
-						dataKey="income"
-						stroke="hsl(var(--tertiary))"
-						strokeWidth={3}
-						activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="income" />}
-						dot={false}
-					/>
-					<Line
-						type="monotone"
-						dataKey="expenses"
-						stroke="hsl(var(--secondary))"
-						strokeWidth={3}
-						dot={false}
-						activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="expenses" />}
-					/>
-				</LineChart>
-			</ResponsiveContainer>
-		</>
+						<XAxis dataKey="name" fontSize={12} axisLine={false} tickLine={false} tickMargin={20} />
+						<YAxis fontSize={12} axisLine={false} tickLine={false} tickMargin={20} padding={{ top: 6 }} />
+						<Tooltip
+							wrapperStyle={{ color: "white", borderRadius: "6px", padding: "5px" }}
+							cursor={<CustomCursor width={50} height="60%" />}
+							content={<CustomTooltip />}
+						/>
+						<Legend iconSize={0} formatter={customLegend} verticalAlign="top" align="right" />
+						<Line
+							type="monotone"
+							dataKey="income"
+							stroke="hsl(var(--tertiary))"
+							strokeWidth={3}
+							activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="income" />}
+							dot={false}
+						/>
+						<Line
+							type="monotone"
+							dataKey="expenses"
+							stroke="hsl(var(--secondary))"
+							strokeWidth={3}
+							dot={false}
+							activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="expenses" />}
+						/>
+					</LineChart>
+				</ResponsiveContainer>
+			) : (
+				<Fallback />
+			)}
+		</div>
 	);
 }
 
