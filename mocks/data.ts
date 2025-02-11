@@ -1,33 +1,6 @@
 import { getDateFromToday } from "@/lib/date";
 import { Data } from "@/types/data";
 
-export const recentTransactions = [
-	{
-		name: "Trainline",
-		category: "transport",
-		amount: 40.0,
-		date: "26 Jun 2024",
-	},
-	{
-		name: "Netflix",
-		category: "subscription",
-		amount: 10.99,
-		date: "25 Jun 2024",
-	},
-	{
-		name: "Spotify",
-		category: "subscription",
-		amount: 20.0,
-		date: "26 Jun 2024",
-	},
-	{
-		name: "Groceries",
-		category: "eating out",
-		amount: 15.0,
-		date: "26 Jun 2024",
-	},
-];
-
 export const IncomePayments = [
 	{
 		name: "salary",
@@ -96,21 +69,6 @@ export const ExpensePayments = [
 		date: "23 Jun 2024",
 		paymentMethod: "debit card",
 	},
-];
-
-export const activityData = [
-	{ name: "Jan", expenses: 1900, income: 2290 },
-	{ name: "Feb", expenses: 1200, income: 2490 },
-	{ name: "Mar", expenses: 1500, income: 2100 },
-	{ name: "Apr", expenses: 1100, income: 2000 },
-	{ name: "May", expenses: 1600, income: 2290 },
-	{ name: "Jun", expenses: 1800, income: 2290 },
-	{ name: "Jul", expenses: 2600, income: 2190 },
-	{ name: "Aug", expenses: 2300, income: 2090 },
-	{ name: "Sep", expenses: 2600, income: 1800 },
-	{ name: "Oct", expenses: 1900, income: 2100 },
-	{ name: "Nov", expenses: 1200, income: 2210 },
-	{ name: "Dec", expenses: 3000, income: 2197 },
 ];
 
 export const IncomeCategories = [
@@ -225,10 +183,62 @@ export const data: Data = {
 		{
 			id: 30,
 			type: "expense",
-			name: "Weekend Road Trip",
+			name: "Weekend Getaway",
 			amount: 220,
 			category: "Holidays",
 			date: getDateFromToday(-4),
+		},
+	],
+	recurringPayments: [
+		{
+			id: 1,
+			type: "bills",
+			name: "Rent",
+			amount: 1200,
+			category: "Rent",
+			firstPaymentDate: getDateFromToday(-160),
+			interval: "monthly",
+			active: true,
+		},
+		{
+			id: 2,
+			type: "subscription",
+			name: "Gym Membership",
+			amount: 40,
+			category: "Gym",
+			firstPaymentDate: getDateFromToday(-150),
+			interval: "monthly",
+			active: true,
+		},
+		{
+			id: 3,
+			type: "bills",
+			name: "Phone Bill",
+			amount: 35,
+			category: "Phone Bill",
+			firstPaymentDate: getDateFromToday(-145),
+			interval: "monthly",
+			active: true,
+		},
+		{
+			id: 4,
+			type: "subscription",
+			name: "Netflix",
+			amount: 15,
+			category: "Entertainment",
+			firstPaymentDate: getDateFromToday(-142),
+			interval: "monthly",
+			active: true,
+		},
+		{
+			id: 5,
+			type: "subscription",
+			name: "Spotify",
+			amount: 10,
+			category: "Entertainment",
+			firstPaymentDate: getDateFromToday(-131),
+			interval: "monthly",
+			active: true,
 		},
 	],
 	investments: [
@@ -287,58 +297,6 @@ export const data: Data = {
 			amount: 2000,
 			category: "Index Funds",
 			date: getDateFromToday(-1),
-		},
-	],
-	recurringPayments: [
-		{
-			id: 1,
-			type: "bills",
-			name: "Rent",
-			amount: 1200,
-			category: "Rent",
-			firstPaymentDate: getDateFromToday(-160),
-			interval: "monthly",
-			active: true,
-		},
-		{
-			id: 2,
-			type: "subscription",
-			name: "Gym Membership",
-			amount: 40,
-			category: "Gym",
-			firstPaymentDate: getDateFromToday(-150),
-			interval: "monthly",
-			active: true,
-		},
-		{
-			id: 3,
-			type: "bills",
-			name: "Phone Bill",
-			amount: 35,
-			category: "Phone Bill",
-			firstPaymentDate: getDateFromToday(-145),
-			interval: "monthly",
-			active: true,
-		},
-		{
-			id: 4,
-			type: "subscription",
-			name: "Netflix",
-			amount: 15,
-			category: "Entertainment",
-			firstPaymentDate: getDateFromToday(-142),
-			interval: "monthly",
-			active: true,
-		},
-		{
-			id: 5,
-			type: "subscription",
-			name: "Spotify",
-			amount: 10,
-			category: "Music",
-			firstPaymentDate: getDateFromToday(-131),
-			interval: "monthly",
-			active: true,
 		},
 	],
 };

@@ -42,7 +42,7 @@ export const formatDate = (date: Date) => {
 
 	const formattedDate = new Intl.DateTimeFormat("en-GB", {
 		day: "numeric",
-		month: "long",
+		month: "short",
 		year: "numeric",
 	}).format(date);
 
