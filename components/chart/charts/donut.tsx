@@ -1,5 +1,6 @@
 "use client";
 
+import Fallback from "@/components/no-data-fallback";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatCurrencyShort } from "@/lib/formatter";
 import { generateRecurringTransactions } from "@/lib/utils";
@@ -39,50 +40,56 @@ export default function DonutChart() {
 	const COLORS = ["hsl(var(--senary))", "hsl(var(--primary))", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
 
 	return (
-		<ResponsiveContainer>
-			<PieChart>
-				<Pie
-					data={topSpending}
-					dataKey="amount"
-					nameKey="category"
-					cx="40%"
-					cy="45%"
-					innerRadius={42}
-					outerRadius={70}
-					labelLine={false}
-					stroke="none"
-					cornerRadius={2}
-					paddingAngle={4}
-				>
-					{topSpending.map((_, index) => (
-						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} style={{ outline: "none" }} />
-					))}
-					<Label
-						width={30}
-						position="center"
-						content={
-							<CustomLabel value1={topSpending.reduce((total, item) => total + item.amount, 0)} value2={-80.51} />
-						}
-					></Label>
-				</Pie>
-				<Tooltip
-					content={<CustomTooltip />}
-					wrapperStyle={{
-						color: "white",
-						borderRadius: "6px",
-						padding: "5px",
-					}}
-				/>
-				<Legend
-					align="right"
-					verticalAlign="middle"
-					layout="vertical"
-					iconSize={0}
-					wrapperStyle={{ top: 2, right: legendPositionRight, fontSize: 14, lineHeight: "1em" }}
-					formatter={customLegend}
-				/>
-			</PieChart>
-		</ResponsiveContainer>
+		<div className="flex h-full flex-row items-center justify-center">
+			{topSpending && topSpending.length > 0 ? (
+				<ResponsiveContainer>
+					<PieChart>
+						<Pie
+							data={topSpending}
+							dataKey="amount"
+							nameKey="category"
+							cx="40%"
+							cy="45%"
+							innerRadius={42}
+							outerRadius={70}
+							labelLine={false}
+							stroke="none"
+							cornerRadius={2}
+							paddingAngle={4}
+						>
+							{topSpending.map((_, index) => (
+								<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} style={{ outline: "none" }} />
+							))}
+							<Label
+								width={30}
+								position="center"
+								content={
+									<CustomLabel value1={topSpending.reduce((total, item) => total + item.amount, 0)} value2={-80.51} />
+								}
+							></Label>
+						</Pie>
+						<Tooltip
+							content={<CustomTooltip />}
+							wrapperStyle={{
+								color: "white",
+								borderRadius: "6px",
+								padding: "5px",
+							}}
+						/>
+						<Legend
+							align="right"
+							verticalAlign="middle"
+							layout="vertical"
+							iconSize={0}
+							wrapperStyle={{ top: 2, right: legendPositionRight, fontSize: 14, lineHeight: "1em" }}
+							formatter={customLegend}
+						/>
+					</PieChart>
+				</ResponsiveContainer>
+			) : (
+				<Fallback />
+			)}
+		</div>
 	);
 }
 
