@@ -6,22 +6,24 @@ import ProgressBar from "@/components/progress-bar";
 import RecentTransactions from "@/components/table/recent-transactions";
 import { CardContent } from "@/components/ui/card";
 import UpcomingPayments from "@/components/upcoming-payments";
+import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { Data } from "@/types/data";
+import { Data, RecurringPayment } from "@/types/data";
 
 export default function Page() {
 	const calculateRemainingAmount = (data: Data) => {
 		const totalIncome = data.transactions
 			.filter((transaction) => transaction.type === "income")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
-
 		const totalExpenses = data.transactions
 			.filter((transaction) => transaction.type === "expense")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
+		const totalFromRecurringPayments = generateRecurringTransactions(data.recurringPayments).reduce(
+			(acc, transaction) => acc + transaction.amount,
+			0
+		);
 
-		const totalSubscriptions = data.recurringPayments.reduce((acc, subscription) => acc + subscription.amount, 0);
-
-		return totalIncome - totalExpenses - totalSubscriptions;
+		return totalIncome - totalExpenses - totalFromRecurringPayments;
 	};
 
 	const calculateTotalSpending = (data: Data) => {
@@ -29,19 +31,22 @@ export default function Page() {
 			.filter((transaction) => transaction.type === "expense")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
 
-		const totalSubscriptions = data.recurringPayments.reduce((acc, subscription) => acc + subscription.amount, 0);
+		const totalFromRecurringPayments = generateRecurringTransactions(data.recurringPayments).reduce(
+			(acc, transaction) => acc + transaction.amount,
+			0
+		);
 
-		return totalExpenses + totalSubscriptions;
+		return totalExpenses + totalFromRecurringPayments;
 	};
 
 	const calculateTotalInvested = (data: Data) => {
 		return data.investments.reduce((acc, investment) => acc + investment.amount, 0);
 	};
 
-	const calculateTotalSubscriptions = (data: Data) => {
-		return data.recurringPayments
-			.filter((payment) => payment.type === "subscription")
-			.reduce((acc, subscription) => acc + subscription.amount, 0);
+	const calculateTotalSubscriptions = (data: RecurringPayment[]) => {
+		return generateRecurringTransactions(data)
+			.filter((payment) => payment.category !== "rent" && payment.category !== "phone bill")
+			.reduce((acc, transaction) => acc + transaction.amount, 0);
 	};
 
 	return (
@@ -77,7 +82,12 @@ export default function Page() {
 				<StatCard heading="total invested" icon="Investments" value={calculateTotalInvested(data)} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-4 xl:col-span-2 xl:col-start-9 xl:row-start-1">
-				<StatCard heading="subscriptions" icon="Subscriptions" value={calculateTotalSubscriptions(data)} isCurrency />
+				<StatCard
+					heading="subscriptions"
+					icon="Subscriptions"
+					value={calculateTotalSubscriptions(data.recurringPayments)}
+					isCurrency
+				/>
 			</div>
 			<div className="relative sm:col-span-12 sm:row-start-6 lg:max-h-[270px] xl:col-span-7 xl:col-start-1 xl:row-span-3 xl:row-start-2">
 				<InfoCard heading="Activity">
