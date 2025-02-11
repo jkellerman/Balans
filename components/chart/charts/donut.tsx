@@ -51,6 +51,8 @@ export default function DonutChart() {
 					outerRadius={70}
 					labelLine={false}
 					stroke="none"
+					cornerRadius={2}
+					paddingAngle={4}
 				>
 					{topSpending.map((_, index) => (
 						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} style={{ outline: "none" }} />
