@@ -8,9 +8,9 @@ type Link = {
 
 export const Links: Link[] = [
 	{ name: "Home", href: "/dashboard", icon: "Home" },
-	{ name: "Transactions", href: "/dashboard/transactions", icon: "Expenses" },
+	{ name: "Transactions", href: "/dashboard/transactions", icon: "Transactions" },
 	{ name: "Investments", href: "/dashboard/investments", icon: "Investments" },
-	{ name: "Subscriptions", href: "/dashboard/subscriptions", icon: "Subscriptions" },
+	{ name: "Recurring Payments", href: "/dashboard/recurring-payments", icon: "RecurringPayment" },
 	{ name: "Spaces", href: "/dashboard/spaces", icon: "Spaces" },
 	{ name: "Insights", href: "/dashboard/insights", icon: "Insights" },
 ];

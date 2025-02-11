@@ -55,7 +55,7 @@ export default function Page() {
 				<StatCard heading="available balance" icon="Wallet" value={calculateRemainingAmount(data)} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 xl:col-span-2 xl:col-start-3">
-				<StatCard heading="total spending" icon="Wallet" value={calculateTotalSpending(data)} isCurrency />
+				<StatCard heading="total spending" icon="Expenses" value={calculateTotalSpending(data)} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:row-span-3 sm:row-start-2 xl:col-span-3 xl:col-start-8 xl:row-span-2 xl:row-start-2">
 				<InfoCard heading="top spending" subheading="19 - 26 June" linkText="view all" path="/transactions">

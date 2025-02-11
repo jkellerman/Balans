@@ -20,6 +20,7 @@ export declare namespace Types {
 		| "logout"
 		| "MagnifyingGlass"
 		| "Piggy"
+		| "RecurringPayment"
 		| "Settings"
 		| "Spaces"
 		| "Subscriptions"
