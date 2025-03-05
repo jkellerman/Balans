@@ -79,7 +79,7 @@ export default function MyLineChart() {
 							type="monotone"
 							dataKey="income"
 							stroke="hsl(var(--nonary))"
-							strokeDasharray={15}
+							strokeDasharray="15 15"
 							strokeWidth={3}
 							activeDot={<CustomActiveDot stroke="#FFF" fill="hsl(var(--quaternary))" line="income" />}
 							dot={false}
