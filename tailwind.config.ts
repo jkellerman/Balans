@@ -24,6 +24,8 @@ module.exports = {
 				quinary: "hsl(var(--quinary))",
 				senary: "hsl(var(--senary))",
 				septenary: "hsl(var(--septenary))",
+				octonary: "hsl(var(--octonary))",
+				nonary: "hsl(var(--nonary))",
 			},
 			keyframes: {
 				"enter-l": {

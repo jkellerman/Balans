@@ -16,10 +16,7 @@ const Progress = React.forwardRef<
 		value={value}
 		max={max}
 	>
-		<ProgressPrimitive.Indicator
-			className="transition-width h-full rounded-md bg-tertiary duration-500 dark:bg-primary"
-			style={style}
-		/>
+		<ProgressPrimitive.Indicator className="transition-width h-full rounded-md bg-primary duration-500" style={style} />
 	</ProgressPrimitive.Root>
 ));
 Progress.displayName = ProgressPrimitive.Root.displayName;

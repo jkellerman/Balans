@@ -37,7 +37,7 @@ export default function DonutChart() {
 
 	const topSpending = getTopSpending(data.transactions, data.recurringPayments).slice(0, 4);
 
-	const COLORS = ["hsl(var(--senary))", "hsl(var(--primary))", "hsl(var(--septenary))", "hsl(var(--tertiary))"];
+	const COLORS = ["hsl(var(--senary))", "hsl(var(--octonary))", "hsl(var(--nonary))", "hsl(var(--primary))"];
 
 	return (
 		<div className="flex h-full flex-row items-center justify-center">
