@@ -6,7 +6,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatDate } from "@/lib/date";
 import { formatCurrency } from "@/lib/formatter";
 import { data } from "@/mocks/data";
-import { RecurringPayment } from "@/types/data";
+import { RecurringPayment } from "@/types/accountData";
 
 import Fallback from "./no-data-fallback";
 

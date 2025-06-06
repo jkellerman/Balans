@@ -5,7 +5,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatCurrencyShort } from "@/lib/formatter";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { RecurringPayment, Transaction } from "@/types/data";
+import { RecurringPayment, Transaction } from "@/types/accountData";
 import { Cell, Label, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import customLegend from "../components/legend";
@@ -31,7 +31,7 @@ export default function DonutChart() {
 		);
 
 		return Object.entries(spendingByCategory)
-			.map(([category, amount]) => ({ category, amount }))
+			.map(([category, amount]) => ({ category, amount: amount as number }))
 			.sort((a, b) => b.amount - a.amount);
 	};
 

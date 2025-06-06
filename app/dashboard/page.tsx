@@ -9,7 +9,7 @@ import UpcomingPayments from "@/components/upcoming-payments";
 import { formatDateShort } from "@/lib/date";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { Data, RecurringPayment } from "@/types/data";
+import { AccountData, RecurringPayment } from "@/types/accountData";
 
 export default function Page() {
 	const today = new Date();
@@ -17,7 +17,7 @@ export default function Page() {
 	sixMonthsBefore.setMonth(today.getMonth() - 6);
 
 	const donutSubHeading = `${formatDateShort(sixMonthsBefore)} - ${formatDateShort(today)}`;
-	const calculateRemainingAmount = (data: Data) => {
+	const calculateRemainingAmount = (data: AccountData) => {
 		const totalIncome = data.transactions
 			.filter((transaction) => transaction.type === "income")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
@@ -32,7 +32,7 @@ export default function Page() {
 		return totalIncome - totalExpenses - totalFromRecurringPayments;
 	};
 
-	const calculateTotalSpending = (data: Data) => {
+	const calculateTotalSpending = (data: AccountData) => {
 		const totalExpenses = data.transactions
 			.filter((transaction) => transaction.type === "expense")
 			.reduce((acc, transaction) => acc + transaction.amount, 0);
@@ -45,7 +45,7 @@ export default function Page() {
 		return totalExpenses + totalFromRecurringPayments;
 	};
 
-	const calculateTotalInvested = (data: Data) => {
+	const calculateTotalInvested = (data: AccountData) => {
 		return data.investments.reduce((acc, investment) => acc + investment.amount, 0);
 	};
 

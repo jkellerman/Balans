@@ -1,5 +1,3 @@
-import { Month } from "@/types/data";
-
 export function getGreeting(): string {
 	const currentHour = new Date().getHours();
 
