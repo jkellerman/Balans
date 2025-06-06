@@ -1,4 +1,4 @@
-import { RecurringPayment, Transaction } from "@/types/accountData";
+import { RecurringPayment, Transaction } from "@/types/account-data";
 import { type ClassValue, clsx } from "clsx";
 import { nanoid } from "nanoid";
 import { twMerge } from "tailwind-merge";

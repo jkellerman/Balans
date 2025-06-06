@@ -5,7 +5,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatCurrencyShort } from "@/lib/formatter";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { RecurringPayment, Transaction } from "@/types/accountData";
+import { RecurringPayment, Transaction } from "@/types/account-data";
 import { Cell, Label, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import customLegend from "../components/legend";
