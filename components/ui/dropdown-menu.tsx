@@ -2,7 +2,7 @@ import * as React from "react";
 
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
-import { Types } from "@/types";
+import { Icons as IconsType } from "@/types";
 
 import Icons from "../icons";
 
@@ -37,7 +37,7 @@ const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
 		inset?: boolean;
-		icon?: Types.Icons;
+		icon?: IconsType;
 	}
 >(({ className, inset, children, icon, ...props }, ref) => (
 	<DropdownMenuPrimitive.Item
@@ -58,7 +58,7 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 const DropdownMenuCheckboxItem = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
 	React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem> & {
-		icon?: Types.Icons;
+		icon?: IconsType;
 	}
 >(({ className, children, checked, icon, ...props }, ref) => (
 	<DropdownMenuPrimitive.CheckboxItem

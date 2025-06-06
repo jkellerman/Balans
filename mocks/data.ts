@@ -1,5 +1,5 @@
 import { getDateFromToday } from "@/lib/date";
-import { Data } from "@/types/data";
+import { AccountData } from "@/types/accountData";
 
 export const IncomeCategories = [
 	{ name: "view all" },
@@ -9,7 +9,7 @@ export const IncomeCategories = [
 	{ name: "other" },
 ];
 
-export const data: Data = {
+export const data: AccountData = {
 	transactions: [
 		{ id: 1, type: "income", name: "Salary", amount: 3200, category: "salary", date: getDateFromToday(-180) },
 		{

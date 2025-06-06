@@ -1,4 +1,4 @@
-import { Interval, Month } from "@/types/data";
+import { Interval, Month } from "@/types/dates";
 
 export const calculateNextPaymentDate = (firstPaymentDate: Date, interval: Interval): Date => {
 	let nextPaymentDate = new Date(firstPaymentDate);

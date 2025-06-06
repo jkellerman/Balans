@@ -1,12 +1,12 @@
 import { formatCurrency } from "@/lib/formatter";
-import { Types } from "@/types";
+import { Icons as IconsType } from "@/types";
 
 import Icons from "../icons";
 import { Card } from "../ui/card";
 
 interface CardProps {
 	heading: string;
-	icon: Types.Icons;
+	icon: IconsType;
 	value: number;
 	isCurrency?: boolean;
 }

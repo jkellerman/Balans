@@ -11,7 +11,7 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Links, SettingsLinks } from "@/constants/navigation";
-import { Types } from "@/types";
+import { Icons as IconsType } from "@/types";
 import clsx from "clsx";
 
 export default function Navigation() {
@@ -19,7 +19,7 @@ export default function Navigation() {
 		<nav className="flex h-full flex-col items-center justify-between">
 			<ul>
 				{Links.map((link, i) => (
-					<NavItem key={i} path={link.href} icon={link.icon as Types.Icons} name={link.name} />
+					<NavItem key={i} path={link.href} icon={link.icon as IconsType} name={link.name} />
 				))}
 			</ul>
 			<div className="flex flex-col gap-8">
@@ -27,7 +27,7 @@ export default function Navigation() {
 					<span key={i} className="text-septenary hover:text-foreground hover:transition-colors">
 						<Link href={link.href}>
 							<span aria-hidden="true">
-								<Icons icon={link.icon as Types.Icons} className="h-6 w-6" />
+								<Icons icon={link.icon as IconsType} className="h-6 w-6" />
 							</span>
 							<span className="sr-only">{link.name}</span>
 						</Link>
@@ -40,7 +40,7 @@ export default function Navigation() {
 
 interface NavItemProps {
 	path: string;
-	icon: Types.Icons;
+	icon: IconsType;
 	name: string;
 }
 

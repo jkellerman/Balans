@@ -1,11 +1,4 @@
-import { Types } from "@/types";
-
-type Link = {
-	name: string;
-	href: string;
-	icon?: Types.Icons;
-	disabled?: boolean;
-};
+import { Link } from "@/types";
 
 export const Links: Link[] = [
 	{ name: "Home", href: "/dashboard", icon: "Home" },
