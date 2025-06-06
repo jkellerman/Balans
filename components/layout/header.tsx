@@ -93,7 +93,6 @@ export default function Header() {
 										<DropdownMenuItem icon="Settings">
 											<Link href="settings">settings</Link>
 										</DropdownMenuItem>
-
 										<DropdownMenuItem icon="logout" disabled>
 											Logout
 										</DropdownMenuItem>

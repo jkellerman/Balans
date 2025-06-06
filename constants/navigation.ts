@@ -4,6 +4,7 @@ type Link = {
 	name: string;
 	href: string;
 	icon?: Types.Icons;
+	disabled?: boolean;
 };
 
 export const Links: Link[] = [
@@ -23,5 +24,5 @@ export const SettingsLinks: Link[] = [
 export const MobileMenuLinks: Link[] = [
 	{ name: "Help", href: "mailto:joshkellerman9@gmail.com" },
 	{ name: "Settings", href: "/settings" },
-	{ name: "Logout", href: "/" },
+	{ name: "Logout", href: "/", disabled: true },
 ];

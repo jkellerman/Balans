@@ -26,7 +26,7 @@ export default function Menu() {
 							<span className="sr-only">Main menu (opens dialog)</span>
 						</button>
 					</SheetTrigger>
-					<SheetContent className="rounded-r-xl bg-primary px-0 pt-6">
+					<SheetContent className="rounded-r-xl bg-primary px-0 pt-6 dark:bg-senary">
 						<SheetClose className="text-quinary" />
 						<div>
 							<div aria-hidden="true" className="pl-5">
@@ -53,7 +53,7 @@ const NavItems = () => {
 					<li
 						key={i}
 						className={clsx("rounded-r-full px-7 py-3 font-bold", {
-							"text-quinary": pathname !== link.href,
+							"text-quinary dark:text-septenary": pathname !== link.href,
 							"bg-quinary text-white": pathname === link.href,
 						})}
 					>
@@ -70,7 +70,12 @@ const MenuLinks = () => {
 		<ul>
 			{MobileMenuLinks.map((link, i) => (
 				<li key={i} className="px-7 py-3">
-					<Link href={link.href} className="font-bold text-quinary">
+					<Link
+						href={link.href}
+						className={clsx("font-bold text-quinary dark:text-septenary", {
+							"opacity-50": link.disabled,
+						})}
+					>
 						{link.name}
 					</Link>
 				</li>
