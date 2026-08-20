@@ -9,7 +9,7 @@ import UpcomingPayments from "@/components/upcoming-payments";
 import { formatDateShort } from "@/lib/date";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { AccountData, RecurringPayment } from "@/types/accountData";
+import { AccountData, RecurringPayment } from "@/types/account-data";
 
 export default function Page() {
 	const today = new Date();

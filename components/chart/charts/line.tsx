@@ -7,7 +7,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatDateToMonth } from "@/lib/date";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { RecurringPayment, Transaction } from "@/types/accountData";
+import { RecurringPayment, Transaction } from "@/types/account-data";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import customLegend from "../components/legend";
