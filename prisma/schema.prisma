@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+  INVESTMENT
+}
+
+enum RecurringInterval {
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model User {
+  id                String             @id @default(cuid())
+  email             String             @unique
+  name              String?
+  createdAt         DateTime           @default(now())
+  transactions      Transaction[]
+  recurringPayments RecurringPayment[]
+  spaces            Space[]
+  categories        Category[]
+}
+
+model Category {
+  id                String             @id @default(cuid())
+  name              String
+  type              TransactionType
+  userId            String
+  user              User               @relation(fields: [userId], references: [id])
+  transactions      Transaction[]
+  recurringPayments RecurringPayment[]
+
+  @@unique([userId, name])
+}
+
+model Transaction {
+  id         String          @id @default(cuid())
+  type       TransactionType
+  name       String
+  amount     Decimal         @db.Decimal(10, 2)
+  date       DateTime
+  categoryId String
+  category   Category        @relation(fields: [categoryId], references: [id])
+  userId     String
+  user       User            @relation(fields: [userId], references: [id])
+  createdAt  DateTime        @default(now())
+
+  @@index([userId, date])
+}
+
+model RecurringPayment {
+  id               String            @id @default(cuid())
+  name             String
+  amount           Decimal           @db.Decimal(10, 2)
+  interval         RecurringInterval
+  firstPaymentDate DateTime
+  nextPaymentDate  DateTime
+  active           Boolean           @default(true)
+  categoryId       String
+  category         Category          @relation(fields: [categoryId], references: [id])
+  userId           String
+  user             User              @relation(fields: [userId], references: [id])
+  createdAt        DateTime          @default(now())
+}
+
+model Space {
+  id        String   @id @default(cuid())
+  name      String
+  target    Decimal  @db.Decimal(10, 2)
+  current   Decimal  @db.Decimal(10, 2) @default(0)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
