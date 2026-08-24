@@ -38,6 +38,7 @@ model User {
 model Category {
   id                String             @id @default(cuid())
   name              String
+  type              TransactionType
   userId            String
   user              User               @relation(fields: [userId], references: [id])
   transactions      Transaction[]
