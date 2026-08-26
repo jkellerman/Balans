@@ -6,48 +6,31 @@ import ProgressBar from "@/components/progress-bar";
 import RecentTransactions from "@/components/table/recent-transactions";
 import { CardContent } from "@/components/ui/card";
 import UpcomingPayments from "@/components/upcoming-payments";
+import { DEMO_USER_ID } from "@/lib/constants";
 import { formatDateShort } from "@/lib/date";
+import { prisma } from "@/lib/prisma";
 import { generateRecurringTransactions } from "@/lib/utils";
 import { data } from "@/mocks/data";
-import { AccountData, RecurringPayment } from "@/types/account-data";
+import { RecurringPayment } from "@/types/account-data";
 
-export default function Page() {
+export default async function Page() {
 	const today = new Date();
 	const sixMonthsBefore = new Date();
 	sixMonthsBefore.setMonth(today.getMonth() - 6);
 
+	const [expenseAgg, incomeAgg, investmentAgg] = await Promise.all([
+		prisma.transaction.aggregate({ where: { userId: DEMO_USER_ID, type: "EXPENSE" }, _sum: { amount: true } }),
+		prisma.transaction.aggregate({ where: { userId: DEMO_USER_ID, type: "INCOME" }, _sum: { amount: true } }),
+		prisma.transaction.aggregate({ where: { userId: DEMO_USER_ID, type: "INVESTMENT" }, _sum: { amount: true } }),
+	]);
+
+	// TODO: totalSpending currently only counts real Transaction rows. Once recurring payments logic is built, fold in payments that would have occurred by now from the RecurringPayment table.
+	const totalSpending = Number(expenseAgg._sum.amount ?? 0);
+	const totalIncome = Number(incomeAgg._sum.amount ?? 0);
+	const totalInvested = Number(investmentAgg._sum.amount ?? 0);
+	const remainingAmount = totalIncome - totalSpending;
+
 	const donutSubHeading = `${formatDateShort(sixMonthsBefore)} - ${formatDateShort(today)}`;
-	const calculateRemainingAmount = (data: AccountData) => {
-		const totalIncome = data.transactions
-			.filter((transaction) => transaction.type === "income")
-			.reduce((acc, transaction) => acc + transaction.amount, 0);
-		const totalExpenses = data.transactions
-			.filter((transaction) => transaction.type === "expense")
-			.reduce((acc, transaction) => acc + transaction.amount, 0);
-		const totalFromRecurringPayments = generateRecurringTransactions(data.recurringPayments).reduce(
-			(acc, transaction) => acc + transaction.amount,
-			0
-		);
-
-		return totalIncome - totalExpenses - totalFromRecurringPayments;
-	};
-
-	const calculateTotalSpending = (data: AccountData) => {
-		const totalExpenses = data.transactions
-			.filter((transaction) => transaction.type === "expense")
-			.reduce((acc, transaction) => acc + transaction.amount, 0);
-
-		const totalFromRecurringPayments = generateRecurringTransactions(data.recurringPayments).reduce(
-			(acc, transaction) => acc + transaction.amount,
-			0
-		);
-
-		return totalExpenses + totalFromRecurringPayments;
-	};
-
-	const calculateTotalInvested = (data: AccountData) => {
-		return data.investments.reduce((acc, investment) => acc + investment.amount, 0);
-	};
 
 	const calculateTotalSubscriptions = (data: RecurringPayment[]) => {
 		return generateRecurringTransactions(data)
@@ -58,10 +41,10 @@ export default function Page() {
 	return (
 		<div className="mb-4 grid gap-4 px-5 sm:grid-cols-12 xl:mx-auto xl:w-full xl:max-w-[1600px] xl:grid-cols-10 xl:px-12">
 			<div className="sm:col-span-6 xl:col-span-2">
-				<StatCard heading="available balance" icon="Wallet" value={calculateRemainingAmount(data)} isCurrency />
+				<StatCard heading="available balance" icon="Wallet" value={remainingAmount} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 xl:col-span-2 xl:col-start-3">
-				<StatCard heading="total spending" icon="Expenses" value={calculateTotalSpending(data)} isCurrency />
+				<StatCard heading="total spending" icon="Expenses" value={totalSpending} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:row-span-3 sm:row-start-2 xl:col-span-3 xl:col-start-8 xl:row-span-2 xl:row-start-2">
 				<InfoCard heading="top spending" subheading={donutSubHeading} linkText="view insights" path="/insights">
@@ -85,7 +68,7 @@ export default function Page() {
 				</InfoCard>
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-3 xl:col-span-2 xl:col-start-7 xl:row-start-1">
-				<StatCard heading="total invested" icon="Investments" value={calculateTotalInvested(data)} isCurrency />
+				<StatCard heading="total invested" icon="Investments" value={totalInvested} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-4 xl:col-span-2 xl:col-start-9 xl:row-start-1">
 				<StatCard
