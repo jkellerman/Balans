@@ -7,12 +7,13 @@ import { Card } from "../ui/card";
 interface CardProps {
 	heading: string;
 	icon: IconsType;
-	value: number;
+	value: number | null;
 	isCurrency?: boolean;
 }
 
 export default function StatCard({ heading, icon, value, isCurrency }: CardProps) {
-	const displayValue = isCurrency ? formatCurrency(value) : value;
+	const isUnavailable = value === null;
+	const displayValue = isUnavailable ? "-" : isCurrency ? formatCurrency(value) : value;
 	return (
 		<Card className="flex items-center gap-4 px-6 py-5">
 			<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full bg-senary/40 text-septenary dark:bg-senary dark:text-secondary">
@@ -20,7 +21,12 @@ export default function StatCard({ heading, icon, value, isCurrency }: CardProps
 			</div>
 			<div>
 				<h2 className="truncate text-sm capitalize text-quinary/60 dark:text-septenary">{heading}</h2>
-				<span className="text-xl font-bold">{displayValue}</span>
+				<span
+					className="text-xl font-bold"
+					{...(isUnavailable && { "aria-label": "Unable to load", title: "Unable to load" })}
+				>
+					{displayValue}
+				</span>
 			</div>
 		</Card>
 	);

@@ -7,16 +7,25 @@ import { prisma } from "@/lib/prisma";
 import Fallback from "../no-data-fallback";
 
 export default async function RecentTransactions() {
-	const recentTransactions = await prisma.transaction.findMany({
-		where: { userId: DEMO_USER_ID },
-		orderBy: { date: "desc" },
-		take: 4,
-		include: { category: true },
-	});
+	let recentTransactions: Awaited<ReturnType<typeof prisma.transaction.findMany<{ include: { category: true } }>>>;
+	let fetchFailed = false;
+	try {
+		recentTransactions = await prisma.transaction.findMany({
+			where: { userId: DEMO_USER_ID },
+			orderBy: { date: "desc" },
+			take: 4,
+			include: { category: true },
+		});
+	} catch {
+		recentTransactions = [];
+		fetchFailed = true;
+	}
 
 	return (
 		<div className="flex h-full items-center justify-center">
-			{recentTransactions && recentTransactions.length > 0 ? (
+			{fetchFailed ? (
+				<Fallback message="Unable to load transactions" />
+			) : recentTransactions.length > 0 ? (
 				<Table>
 					<TableHeader>
 						<TableRow>
