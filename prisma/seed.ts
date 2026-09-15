@@ -19,10 +19,17 @@ async function main() {
 	await prisma.recurringPayment.deleteMany();
 	await prisma.space.deleteMany();
 	await prisma.category.deleteMany();
-	await prisma.user.deleteMany();
 
-	const user = await prisma.user.create({
-		data: { email: "demo@balans.app", name: "Demo User" },
+	const DEMO_USER_ID = "demo-user-id";
+
+	const user = await prisma.user.upsert({
+		where: { id: DEMO_USER_ID },
+		update: {},
+		create: {
+			id: DEMO_USER_ID,
+			email: "demo@balans.app",
+			name: "Demo User",
+		},
 	});
 
 	const categoryDefs: { name: string; type: "INCOME" | "EXPENSE" | "INVESTMENT" }[] = [
@@ -273,9 +280,9 @@ async function main() {
 
 	await prisma.space.createMany({
 		data: [
-			{ name: "Trip to Paris", target: 1500, current: 620, userId: user.id },
-			{ name: "Emergency fund", target: 3000, current: 1200, userId: user.id },
-			{ name: "New laptop", target: 900, current: 900, userId: user.id },
+			{ name: "Trip to Paris", target: 1500, current: 620, order: 0, userId: user.id },
+			{ name: "Emergency fund", target: 3000, current: 1200, order: 1, userId: user.id },
+			{ name: "New laptop", target: 900, current: 900, order: 2, userId: user.id },
 		],
 	});
 

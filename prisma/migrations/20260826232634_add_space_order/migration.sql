@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Space" ADD COLUMN     "order" INTEGER NOT NULL DEFAULT 0;

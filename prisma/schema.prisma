@@ -82,6 +82,7 @@ model Space {
   name      String
   target    Decimal  @db.Decimal(10, 2)
   current   Decimal  @db.Decimal(10, 2) @default(0)
+  order     Int      @default(0)
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
