@@ -10,9 +10,7 @@ import { DEMO_USER_ID } from "@/lib/constants";
 import { formatDateShort } from "@/lib/date";
 import { formatCurrency } from "@/lib/formatter";
 import { prisma } from "@/lib/prisma";
-import { generateRecurringTransactions } from "@/lib/utils";
-import { data } from "@/mocks/data";
-import { RecurringPayment } from "@/types/account-data";
+import { sumRecurringByCategory } from "@/lib/transactions";
 
 export default async function Page() {
 	const today = new Date();
@@ -29,6 +27,13 @@ export default async function Page() {
 	const totalIncome = incomeAgg.status === "fulfilled" ? Number(incomeAgg.value._sum.amount ?? 0) : null;
 	const totalInvested = investmentAgg.status === "fulfilled" ? Number(investmentAgg.value._sum.amount ?? 0) : null;
 	const remainingAmount = totalIncome !== null && totalSpending !== null ? totalIncome - totalSpending : null;
+
+	let totalSubscriptions: number | null;
+	try {
+		totalSubscriptions = await sumRecurringByCategory(DEMO_USER_ID, "Subscriptions");
+	} catch {
+		totalSubscriptions = null;
+	}
 
 	let totalSaved: number | null;
 	let spaces: Awaited<ReturnType<typeof prisma.space.findMany>>;
@@ -55,12 +60,6 @@ export default async function Page() {
 	}
 
 	const donutSubHeading = `${formatDateShort(sixMonthsBefore)} - ${formatDateShort(today)}`;
-
-	const calculateTotalSubscriptions = (data: RecurringPayment[]) => {
-		return generateRecurringTransactions(data)
-			.filter((payment) => payment.category !== "rent" && payment.category !== "phone bill")
-			.reduce((acc, transaction) => acc + transaction.amount, 0);
-	};
 
 	return (
 		<div className="mb-4 grid gap-4 px-5 sm:grid-cols-12 xl:mx-auto xl:w-full xl:max-w-[1600px] xl:grid-cols-10 xl:px-12">
@@ -115,12 +114,7 @@ export default async function Page() {
 				<StatCard heading="total invested" icon="Investments" value={totalInvested} isCurrency />
 			</div>
 			<div className="sm:col-span-6 sm:col-start-7 sm:row-start-4 xl:col-span-2 xl:col-start-9 xl:row-start-1">
-				<StatCard
-					heading="subscriptions"
-					icon="Subscriptions"
-					value={calculateTotalSubscriptions(data.recurringPayments)}
-					isCurrency
-				/>
+				<StatCard heading="subscriptions" icon="Subscriptions" value={totalSubscriptions} isCurrency />
 			</div>
 			<div className="relative sm:col-span-12 sm:row-start-6 lg:max-h-[270px] xl:col-span-7 xl:col-start-1 xl:row-span-3 xl:row-start-2">
 				<InfoCard heading="Activity">
