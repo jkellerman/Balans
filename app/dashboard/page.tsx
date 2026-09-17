@@ -28,12 +28,40 @@ export default async function Page() {
 	const totalInvested = investmentAgg.status === "fulfilled" ? Number(investmentAgg.value._sum.amount ?? 0) : null;
 	const remainingAmount = totalIncome !== null && totalSpending !== null ? totalIncome - totalSpending : null;
 
+	// Top Spending
+
+	let topSpending: { category: string; amount: number }[] = [];
+	let topSpendingFetchFailed = false;
+	try {
+		const spendingByCategory = await prisma.transaction.groupBy({
+			by: ["categoryId"],
+			where: { userId: DEMO_USER_ID, type: "EXPENSE" },
+			_sum: { amount: true },
+			orderBy: { _sum: { amount: "desc" } },
+			take: 4,
+		});
+		const categoryIds = spendingByCategory.map((row) => row.categoryId);
+		const categories = await prisma.category.findMany({ where: { id: { in: categoryIds } } });
+		const categoryNameMap = Object.fromEntries(categories.map((c) => [c.id, c.name]));
+		topSpending = spendingByCategory.map((row) => ({
+			category: categoryNameMap[row.categoryId],
+			amount: Number(row._sum.amount ?? 0),
+		}));
+	} catch {
+		topSpending = [];
+		topSpendingFetchFailed = true;
+	}
+
+	// Total Subscriptions
+
 	let totalSubscriptions: number | null;
 	try {
 		totalSubscriptions = await sumRecurringByCategory(DEMO_USER_ID, "Subscriptions");
 	} catch {
 		totalSubscriptions = null;
 	}
+
+	// Total Saved
 
 	let totalSaved: number | null;
 	let spaces: Awaited<ReturnType<typeof prisma.space.findMany>>;
@@ -46,6 +74,8 @@ export default async function Page() {
 		spaces = [];
 		totalSaved = null;
 	}
+
+	// Featured Space
 
 	let featuredSpace: Awaited<ReturnType<typeof prisma.space.findFirst>>;
 	let featuredSpaceFetchFailed = false;
@@ -72,7 +102,7 @@ export default async function Page() {
 			<div className="sm:col-span-6 sm:row-span-3 sm:row-start-2 xl:col-span-3 xl:col-start-8 xl:row-span-2 xl:row-start-2">
 				<InfoCard heading="top spending" subheading={donutSubHeading} linkText="view insights" path="/insights">
 					<CardContent className="h-[170px] w-full sm:h-[220px] xl:h-[180px]">
-						<DonutChart />
+						<DonutChart topSpending={topSpending} fetchFailed={topSpendingFetchFailed} />
 					</CardContent>
 				</InfoCard>
 			</div>

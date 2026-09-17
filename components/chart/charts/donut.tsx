@@ -3,45 +3,28 @@
 import Fallback from "@/components/no-data-fallback";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { formatCurrencyShort } from "@/lib/formatter";
-import { generateRecurringTransactions } from "@/lib/utils";
-import { data } from "@/mocks/data";
-import { RecurringPayment, Transaction } from "@/types/account-data";
 import { Cell, Label, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import customLegend from "../components/legend";
 import CustomTooltip from "../components/tooltip";
 
-export default function DonutChart() {
+interface DonutChartProps {
+	topSpending: { category: string; amount: number }[];
+	fetchFailed?: boolean;
+}
+
+export default function DonutChart({ topSpending, fetchFailed }: DonutChartProps) {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
 
 	const legendPositionRight = isSmallerScreen ? 30 : 50;
-
-	const getTopSpending = (transactions: Transaction[], recurringPayments: RecurringPayment[]) => {
-		const expenseTransactions = transactions.filter((t) => t.type === "expense");
-		const recurringTransactions = generateRecurringTransactions(recurringPayments);
-
-		const allExpenses = [...expenseTransactions, ...recurringTransactions];
-
-		const spendingByCategory = allExpenses.reduce(
-			(acc, transaction) => {
-				acc[transaction.category] = (acc[transaction.category] || 0) + transaction.amount;
-				return acc;
-			},
-			{} as Record<string, number>
-		);
-
-		return Object.entries(spendingByCategory)
-			.map(([category, amount]) => ({ category, amount: amount as number }))
-			.sort((a, b) => b.amount - a.amount);
-	};
-
-	const topSpending = getTopSpending(data.transactions, data.recurringPayments).slice(0, 4);
 
 	const COLORS = ["hsl(var(--senary))", "hsl(var(--octonary))", "hsl(var(--nonary))", "hsl(var(--primary))"];
 
 	return (
 		<div className="flex h-full flex-row items-center justify-center">
-			{topSpending && topSpending.length > 0 ? (
+			{fetchFailed ? (
+				<Fallback message="Unable to load spending data" />
+			) : topSpending && topSpending.length > 0 ? (
 				<ResponsiveContainer>
 					<PieChart>
 						<Pie
