@@ -1,49 +1,18 @@
 "use client";
 
-import React from "react";
-
 import Fallback from "@/components/no-data-fallback";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { formatDateToMonth } from "@/lib/date";
-import { generateRecurringTransactions } from "@/lib/utils";
-import { data } from "@/mocks/data";
-import { RecurringPayment, Transaction } from "@/types/account-data";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import customLegend from "../components/legend";
 import CustomTooltip from "../components/tooltip";
 
-interface MonthlyData {
-	name: string;
-	income: number;
-	expenses: number;
-}
-
-export default function MyLineChart() {
+export default function MyLineChart({
+	activityData,
+}: {
+	activityData: { name: string; income: number; expenses: number }[];
+}) {
 	const isSmallerScreen = useMediaQuery("(max-width: 768px)");
-
-	const getMonthlyData = (transactions: Transaction[], recurringPayments: RecurringPayment[]): MonthlyData[] => {
-		const monthlyData: Record<string, MonthlyData> = {};
-
-		const allTransactions = [...transactions, ...generateRecurringTransactions(recurringPayments)];
-
-		allTransactions.forEach((transaction) => {
-			const month = formatDateToMonth(transaction.date);
-
-			if (!monthlyData[month]) {
-				monthlyData[month] = { name: month, income: 0, expenses: 0 };
-			}
-
-			if (transaction.type === "income") {
-				monthlyData[month].income += transaction.amount;
-			} else if (transaction.type === "expense") {
-				monthlyData[month].expenses += transaction.amount;
-			}
-		});
-		return Object.values(monthlyData);
-	};
-
-	const activityData = getMonthlyData(data.transactions, data.recurringPayments);
 
 	return (
 		<div className="flex h-full flex-row items-center justify-center">

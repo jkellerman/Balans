@@ -7,7 +7,7 @@ import RecentTransactions from "@/components/table/recent-transactions";
 import { CardContent } from "@/components/ui/card";
 import UpcomingPayments from "@/components/upcoming-payments";
 import { DEMO_USER_ID } from "@/lib/constants";
-import { formatDateShort } from "@/lib/date";
+import { formatDateShort, formatDateToMonth } from "@/lib/date";
 import { formatCurrency } from "@/lib/formatter";
 import { prisma } from "@/lib/prisma";
 import { sumRecurringByCategory } from "@/lib/transactions";
@@ -89,6 +89,33 @@ export default async function Page() {
 		featuredSpaceFetchFailed = true;
 	}
 
+	// TODO: activityData only reflects real Transaction rows.
+	// Recurring payments aren't folded in yet — needs the occurrence
+	// calculator to accurately distribute them across months.
+	let activityData: { name: string; income: number; expenses: number }[] = [];
+	try {
+		const sixMonthsAgo = new Date();
+		sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+		const activityTransactions = await prisma.transaction.findMany({
+			where: { userId: DEMO_USER_ID, date: { gte: sixMonthsAgo }, type: { in: ["INCOME", "EXPENSE"] } },
+			select: { date: true, type: true, amount: true },
+		});
+
+		const monthlyDataMap: Record<string, { name: string; income: number; expenses: number }> = {};
+		for (const t of activityTransactions) {
+			const month = formatDateToMonth(t.date);
+			if (!monthlyDataMap[month]) {
+				monthlyDataMap[month] = { name: month, income: 0, expenses: 0 };
+			}
+			if (t.type === "INCOME") monthlyDataMap[month].income += Number(t.amount);
+			else if (t.type === "EXPENSE") monthlyDataMap[month].expenses += Number(t.amount);
+		}
+		activityData = Object.values(monthlyDataMap);
+	} catch {
+		activityData = [];
+	}
+
 	const donutSubHeading = `${formatDateShort(sixMonthsBefore)} - ${formatDateShort(today)}`;
 
 	return (
@@ -149,7 +176,7 @@ export default async function Page() {
 			<div className="relative sm:col-span-12 sm:row-start-6 lg:max-h-[270px] xl:col-span-7 xl:col-start-1 xl:row-span-3 xl:row-start-2">
 				<InfoCard heading="Activity">
 					<CardContent className="h-[170px] w-full lg:min-h-[270px] lg:px-8">
-						<LineChart />
+						<LineChart activityData={activityData} />
 					</CardContent>
 				</InfoCard>
 			</div>
